@@ -2,6 +2,8 @@
   <% @events.each do |event| %>
     <li>
       <%= link_to "#{event.name}" %>
+      <%= link_to "X", host_event_path(@host, event), :method => 'delete' %>
+
     </li>
   <% end %>
 </ul>
