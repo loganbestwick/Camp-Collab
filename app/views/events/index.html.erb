@@ -1,5 +1,15 @@
 <h1> Here are your events!</h1>
 
+<%= form_for(@event, url: host_events_path(@host)) do |f| %>
+  Name:<%= f.text_field :name %>
+  Address:<%= f.text_field :address %>
+  City:<%= f.text_field :city %>
+  State:<%= f.text_field :state %>
+  Description:<%= f.text_field :description %>
+  Expected Attendance:<%= f.text_field :expected_attendance %>
+  Zip:<%= f.text_field :zip %>
+  <%= f.submit  %>
+<% end %>
 
 
 <div>
