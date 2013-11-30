@@ -2,7 +2,9 @@ class HostsController < ApplicationController
 
   def index
     @host = Host.new
-    # @session = session
+    if session[:host_id]
+      redirect_to host_events_path(Host.find(session[:host_id]))
+    end
   end
 
   def new
