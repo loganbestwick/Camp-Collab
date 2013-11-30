@@ -1,11 +1,12 @@
 Potluck::Application.routes.draw do
 
-  root :to => 'events#index'
+  root :to => 'hosts#index'
 
   resources :hosts, only: [] do
     resources :events, only: [:index, :create, :destroy, :show]
   end
 
+  resources :hosts, only: [:create]
   # resources :event, only: [] do
   #   resources :guests
   # end
@@ -13,6 +14,9 @@ Potluck::Application.routes.draw do
   # resources :guests, only: [] do
   #   resources :items
   # end
+
+  resources :sessions, only: [:create, :destroy, :new]
+  get 'logout', :to => 'sessions#destroy'
 
   resources :event, only: [] do
     resources :items, except: [:show, :edit, :new]
