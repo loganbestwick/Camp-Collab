@@ -40,3 +40,12 @@ gem 'jquery-rails'
 
 # To use debugger
 # gem 'debugger'
+
+group :test, :development do
+  gem "rspec-rails", "~> 2.0"
+end
+
+group :test do
+  gem 'capybara'
+  gem 'database_cleaner'
+end
