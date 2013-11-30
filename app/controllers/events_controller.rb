@@ -1,6 +1,7 @@
 class EventsController < ApplicationController
 
   def index
+    # @host = Host.find(params[:id])
     @events = Event.all
     @event = Event.new
   end

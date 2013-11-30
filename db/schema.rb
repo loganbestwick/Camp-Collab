@@ -29,6 +29,8 @@ ActiveRecord::Schema.define(:version => 20131130012854) do
   create_table "guests", :force => true do |t|
     t.string   "name"
     t.string   "token"
+    t.string   "email"
+    t.string   "phone"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
     t.integer  "event_id"
@@ -38,6 +40,8 @@ ActiveRecord::Schema.define(:version => 20131130012854) do
     t.string   "name"
     t.string   "username"
     t.string   "password"
+    t.string   "email"
+    t.string   "phone"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
@@ -46,10 +50,11 @@ ActiveRecord::Schema.define(:version => 20131130012854) do
     t.string   "name"
     t.string   "price"
     t.string   "description"
+    t.integer  "host_id"
+    t.integer  "guest_id"
+    t.integer  "event_id"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
-    t.integer  "event_id"
-    t.integer  "guest_id"
   end
 
 end

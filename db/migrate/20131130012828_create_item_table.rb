@@ -2,10 +2,10 @@ class CreateItemTable < ActiveRecord::Migration
   def change
     create_table :items do |t|
       t.string :name, :price, :description
-
-      t.timestamps
+      t.integer :host_id
+      t.integer :guest_id
       t.belongs_to :event
-      t.belongs_to :guest
+      t.timestamps
     end
   end
 end
