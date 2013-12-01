@@ -1,4 +1,4 @@
-Potluck::Application.routes.draw do
+Campcollab::Application.routes.draw do
 
   root :to => 'hosts#index'
 

@@ -4,4 +4,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-Potluck::Application.load_tasks
+Campcollab::Application.load_tasks
