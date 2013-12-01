@@ -1,14 +1,26 @@
-<ul>
+<%- model_class = Item -%>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th><%= model_class.human_attribute_name(:name) %></th>
+      <th><%= model_class.human_attribute_name(:price) %></th>
+      <th><%= model_class.human_attribute_name(:description) %></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+
   <% @items.each do |item| %>
-    <li>
-      <%= item.name %>
+    <tr>
+      <td><%= item.name %></td>
+      <td><%= item.price %></td>
+      <td><%= item.description %></td>
+      <td><% if item.important == false %><%= link_to "Important", event_item_path(@event, item, :item => {:important => true}), :method=> :put, :class => 'btn btn-mini'%><% end %></td>
 
-      <%= item.price %>
-
-
-      <% if item.important == false %><%= link_to "Mark Important", event_item_path(@event, item, :item => {:important => true}), :method=> :put%><% end %>
-      <% if item.purchased == false %><%= link_to "Purchased", event_item_path(@event, item, :item => {:purchased => true}), :method=> :put%><% end %>
-
-    </li>
+      <td><% if item.purchased == false %><%= link_to "Purchase", event_item_path(@event, item, :item => {:purchased => true}), :method=> :put, :class => 'btn btn-mini'%><% end %></td>
+    </tr>
   <% end %>
-</ul>
+</tbody>
+</table>
