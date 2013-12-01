@@ -2,6 +2,8 @@
   <% @items.each do |item| %>
     <li>
       <%= item.name %>
+      <% if item.important == false %><%= link_to "Mark Important", event_item_path(item, :item => {:important => true}), :method=> :put%><% end %>
+      <% if item.purchased == false %><%= link_to "Purchsed", event_item_path(item, :item => {:purchased => true}), :method=> :put%><% end %>
     </li>
   <% end %>
 </ul>

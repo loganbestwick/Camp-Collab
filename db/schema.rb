@@ -53,8 +53,10 @@ ActiveRecord::Schema.define(:version => 20131130012854) do
     t.integer  "host_id"
     t.integer  "guest_id"
     t.integer  "event_id"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.boolean  "important",   :default => false, :null => false
+    t.boolean  "purchased",   :default => false, :null => false
+    t.datetime "created_at",                     :null => false
+    t.datetime "updated_at",                     :null => false
   end
 
 end
