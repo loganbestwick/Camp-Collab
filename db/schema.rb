@@ -21,8 +21,9 @@ ActiveRecord::Schema.define(:version => 20131130012854) do
     t.string   "description"
     t.integer  "expected_attendance"
     t.integer  "zip"
-    t.datetime "created_at",          :null => false
-    t.datetime "updated_at",          :null => false
+    t.boolean  "completed",           :default => false, :null => false
+    t.datetime "created_at",                             :null => false
+    t.datetime "updated_at",                             :null => false
     t.integer  "host_id"
   end
 
