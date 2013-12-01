@@ -1,14 +1,15 @@
 <h1>Event Name: <%= @event.name %></h1>
-<h2>Host Name: <%= @host.name %></h2>
-<h3>List Items:</h3>
+<h6>Event Address: <%= @event.address %></h2>
+<h6>Host Email: <%= @host.email %></h2>
 
+<h4>Add Item</h4>
 <%= form_for(@item, url: event_items_path(@event)) do |f| %>
-  <%= f.text_field :name %>
-  <%= f.text_field :price %>
-
-  <%= f.submit  %>
+  Name: <%= f.text_field :name %>
+  Price:<%= f.text_field :price %>
+        <%= f.submit  %>
 <% end %>
 
+<h3>List Items:</h3>
 <div>
 <%= render 'items/items', items: @items %>
 </div>
