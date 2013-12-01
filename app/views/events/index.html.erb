@@ -2,11 +2,11 @@
 
 <%= form_for(@event, url: host_events_path(@host)) do |f| %>
   Name:<%= f.text_field :name %>
+  Camp Site:<%= f.text_field :camp_site %>
   Address:<%= f.text_field :address %>
   City:<%= f.text_field :city %>
   State:<%= f.text_field :state %>
   Description:<%= f.text_field :description %>
-  Expected Attendance:<%= f.text_field :expected_attendance %>
   Zip:<%= f.text_field :zip %>
   <%= f.submit  %>
 <% end %>
