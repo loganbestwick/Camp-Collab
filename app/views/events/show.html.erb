@@ -3,13 +3,13 @@
 <h6>Host Email: <%= @host.email %></h2>
 
 <h4>Add Item</h4>
-<%= form_for(@item, url: event_items_path(@event)) do |f| %>
+<%= form_for(@item, url: event_items_path(@event), :remote => true) do |f| %>
   Name: <%= f.text_field :name %>
   Price:<%= f.text_field :price %>
         <%= f.submit  %>
 <% end %>
 
 <h3>List Items:</h3>
-<div>
+<div class="item-list">
 <%= render 'items/items', items: @items %>
 </div>
