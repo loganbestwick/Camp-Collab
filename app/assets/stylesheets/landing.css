@@ -14,7 +14,7 @@ filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='.myBackground.jp
   text-align: center;
 }
 
-#landing_page_row {
+.landing_row {
   display: inline-block;
   text-align: left;
 }
