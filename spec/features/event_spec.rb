@@ -12,6 +12,14 @@ feature 'Create Event' do
       expect(page).to have_content "Event Name: Test Event"
      end
 
+     it 'goes to the event index page is a name is not passed in to the form' do
+      host = Host.create name: "Logan", password: "password", email: "goob@foob.com"
+      visit host_events_path(host)
+      fill_in 'event_name',   with: nil
+      click_button "Create Event"
+      expect(page).to have_content("Name can't be blank")
+     end
+
    end
  end
 
@@ -46,7 +54,7 @@ feature 'Create Event' do
       expect(page).to have_content "Test Item"
     end
 
-    it 'can change the state of an item to important', :js => true do
+    it 'can change the state of an item to important' do
       host = Host.create name: "Logan", password: "password", email: "goob@foob.com"
       event = Event.create name: "Test Event #2", host_id: host.id
       item = Item.create name: "Test Item #2", event_id: event.id
@@ -60,7 +68,7 @@ feature 'Create Event' do
       expect{click_link "Important"}.to change{item.reload.important}
     end
 
-    it 'can change the state of an item to purchased', :js => true do
+    it 'can change the state of an item to purchased' do
       host = Host.create name: "Logan", password: "password", email: "goob@foob.com"
       event = Event.create name: "Test Event #2", host_id: host.id
       item = Item.create name: "Test Item #2", event_id: event.id
@@ -73,5 +81,6 @@ feature 'Create Event' do
       expect(page).to have_content("Purchase")
       expect{click_link "Purchase"}.to change{item.reload.purchased}
     end
+
   end
 end

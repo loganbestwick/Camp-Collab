@@ -13,6 +13,22 @@ feature 'Signup' do
        }.to change(Host, :count).by(1)
      end
 
+    it "redirects to root page if incorrect sign up email info is passed" do
+      visit root_path
+      fill_in 'host_email',   with: ""
+      fill_in 'host_password', with: "testing"
+      click_button "Create Host"
+      expect(page).to have_content("Email is invalid")
+    end
+
+    it "redirects to root page if incorrect sign up email info is passed" do
+      visit root_path
+      fill_in 'host_email',   with: "logan@gmail.com"
+      fill_in 'host_password', with: "test"
+      click_button "Create Host"
+      expect(page).to have_content("Password is too short")
+    end
+
    end
  end
 
