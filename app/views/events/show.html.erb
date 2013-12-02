@@ -1,6 +1,9 @@
 <h1><%= @event.name %></h1>
 <h6>Location: <% if @event.address %><%= @event.address %><% else %> TBD <% end %></h2>
 <h6>Host: <%= @host.name %></h2>
+<h6>Begins at: <% if @event.start_time %><%= @event.start_time %><% else %> No specified start time <% end %></h2>
+<h6>Begins on: <% if @event.start_day %><%= @event.start_day %><% else %> No specified start day <% end %></h2>
+
 
 <h4>Add Item</h4>
 <%= form_for(@item, url: event_items_path(@event), :remote => true) do |f| %>

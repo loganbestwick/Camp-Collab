@@ -9,7 +9,7 @@ feature 'Create Event' do
       visit host_events_path(host)
       fill_in 'event_name',   with: "Test Event"
       expect{click_button "Create Event"}.to change{Event.all.count}.by(1)
-      expect(page).to have_content "Event Name: Test Event"
+      expect(page).to have_content "Test Event"
      end
 
    end
@@ -58,7 +58,7 @@ feature 'Create Event' do
       click_button "Create Event"
       fill_in 'item_name', with: "Test Item #2"
       click_button "Create Item"
-      click_link "Important"
+      # click_link "Important"
       # fill_in 'event_name',   with: "New Event"
       # click_button "Create Event"
       # fill_in 'item_name', with: "Test Item"
