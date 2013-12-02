@@ -18,6 +18,7 @@
       <td><%= item.description %></td>
       <td><%= check_box_tag(:important) %></td>
       <td><% if item.purchased == false %><%= link_to "I got it", event_item_path(@event, item, :item => {:purchased => true}), :method=> :put, :class => 'btn btn-mini'%><% else %><%= Guest.find(2).name %> is bringing this<% end %></td>
+      <td><%= link_to "X", event_item_path(@event, item), :method => :delete, :remote =>true, :class => 'dlt-item'%></td>
     </tr>
   <% end %>
 </tbody>

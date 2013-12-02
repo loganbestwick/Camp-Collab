@@ -2,7 +2,7 @@
 <h6>Location: <% if @event.address %><%= @event.address %><% else %> TBD <% end %></h2>
 <h6>Organizer: <%= @host.name %></h2>
 
-<%= form_for(@item, url: event_items_path(@event), :remote => true) do |f| %>
+<%= form_for([@event, @item], :remote => true) do |f| %>
   Add Item: <%= f.text_field :name %>
         <%= f.submit  %>
 <% end %>
@@ -37,3 +37,4 @@
 
 </div>
 </div>
+
