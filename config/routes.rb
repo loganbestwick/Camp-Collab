@@ -22,7 +22,6 @@ Campcollab::Application.routes.draw do
     resources :items, except: [:show, :edit, :new]
   end
 
-  # get "important", :to => 'items#important'
   match  '/event/:event_id/items/:id.important' => 'items#important', via: [:get]
 
 
