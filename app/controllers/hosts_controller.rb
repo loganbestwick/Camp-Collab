@@ -1,5 +1,5 @@
 class HostsController < ApplicationController
-
+  layout 'landing'
   def index
     @host = Host.new
     if session[:host_id]
