@@ -6865,18 +6865,14 @@ input[type="color"],
 }
 
 .important {
-    border-color: orange;
-    border-width: 2px;
-    border-style: solid;
+        -webkit-box-shadow: 0px 2px 4px #e06547;
+    -moz-box-shadow: 0px 2px 4px #e06547;
+    box-shadow: 0px 2px 4px #e06547;
+
+    font-weight: bold;
 }
 
 td {
     background:#ddd;
     padding:20px;
 }
-table > :first-child > tr:first-of-type > :first-child { border-radius: 5px 0 0 0 }
-table > :first-child > tr:first-of-type > :last-child { border-radius: 0 5px 0 0 }
-table > :last-child > tr:last-of-type > :first-child { border-radius: 0 0 0 5px }
-table > :last-child > tr:last-of-type > :last-child { border-radius: 0 0 5px 0 }
-table > :last-child > tr:last-of-type > :only-child { border-radius: 0 0 0 5px }
-table > :first-child > tr:first-of-type > :last-child[rowspan="2"]{border-radius: 0 5px 5px 0}

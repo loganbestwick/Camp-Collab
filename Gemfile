@@ -48,4 +48,11 @@ end
 group :test do
   gem 'capybara'
   gem 'database_cleaner'
+  gem 'simplecov', :require => false, :group => :test
 end
+
+group :production do
+  gem 'rails_12factor'
+end
+
+# gem 'rails_12factor', group: :production
