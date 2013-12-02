@@ -15,10 +15,15 @@ class EventsController < ApplicationController
   end
 
   def create
+    @events = Event.all
     @host = Host.find(params[:host_id])
     @event = Event.create(params[:event])
     @host.events << @event
-    redirect_to host_event_path(@host, @event)
+    if @event.save
+      redirect_to host_event_path(@host, @event)
+    else
+      render "index"
+    end
   end
 
   def destroy
