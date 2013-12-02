@@ -18,7 +18,7 @@ class EventsController < ApplicationController
     @host = Host.find(params[:host_id])
     @event = Event.create(params[:event])
     @host.events << @event
-    if @host.save
+    if @event.save
       redirect_to host_event_path(@host, @event)
     else
       render "index"
