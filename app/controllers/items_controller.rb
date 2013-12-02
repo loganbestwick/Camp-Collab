@@ -25,4 +25,11 @@ class ItemsController < ApplicationController
   def destroy
   end
 
+  def important
+    @item = Item.find(params[:id])
+    @item.toggle(:important)
+    @item.save
+    redirect_to host_event_path(session[:host_id], Event.find(params[:event_id]))
+  end
+
 end
