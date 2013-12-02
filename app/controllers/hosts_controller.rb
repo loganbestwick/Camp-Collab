@@ -16,7 +16,7 @@ class HostsController < ApplicationController
     if @host.save
       redirect_to root_url, :notice => "Signed up!"
     else
-      render "new"
+      render "index"
     end
   end
 
