@@ -46,25 +46,32 @@ feature 'Create Event' do
       expect(page).to have_content "Test Item"
     end
 
-# #Capybara appears to have an error when it runs the URI route from this test. It includes
-# #a forward slash in the URI which makes it invalid
-    it 'can change the state of an item to important' do
+    it 'can change the state of an item to important', :js => true do
       host = Host.create name: "Logan", password: "password", email: "goob@foob.com"
+      event = Event.create name: "Test Event #2", host_id: host.id
+      item = Item.create name: "Test Item #2", event_id: event.id
       visit root_path
       fill_in 'email',   with: "goob@foob.com"
       fill_in 'password', with: "password"
       click_button 'Log in'
-      fill_in 'event_name',   with: "Test Event #2"
-      click_button "Create Event"
-      fill_in 'item_name', with: "Test Item #2"
-      click_button "Create Item"
-      click_link "Important"
-      # fill_in 'event_name',   with: "New Event"
-      # click_button "Create Event"
-      # fill_in 'item_name', with: "Test Item"
-      # expect{click_button "Create Item"}.to change{Item.all.count}.by(1)
-      # expect(page).to have_content "Test Item"
+      click_link 'Test Event #2'
+      expect(page).to have_content("Event Name: Test Event #2")
+      expect(page).to have_content("Test Item #2")
+      expect{click_link "Important"}.to change{item.reload.important}
     end
 
+    it 'can change the state of an item to purchased', :js => true do
+      host = Host.create name: "Logan", password: "password", email: "goob@foob.com"
+      event = Event.create name: "Test Event #2", host_id: host.id
+      item = Item.create name: "Test Item #2", event_id: event.id
+      visit root_path
+      fill_in 'email',   with: host.email
+      fill_in 'password', with: 'password'
+      click_button 'Log in'
+      click_link 'Test Event #2'
+      expect(page).to have_content("Event Name: Test Event #2")
+      expect(page).to have_content("Purchase")
+      expect{click_link "Purchase"}.to change{item.reload.purchased}
+    end
   end
- end
+end

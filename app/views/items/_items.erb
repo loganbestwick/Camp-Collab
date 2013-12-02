@@ -18,7 +18,6 @@
       <td><%= item.price %></td>
       <td><%= item.description %></td>
       <td><% if item.important == false %><%= link_to "Important", event_item_path(@event, item, :item => {:important => true}), :method=> :put, :class => 'btn btn-mini'%><% end %></td>
-
       <td><% if item.purchased == false %><%= link_to "Purchase", event_item_path(@event, item, :item => {:purchased => true}), :method=> :put, :class => 'btn btn-mini'%><% end %></td>
     </tr>
   <% end %>
