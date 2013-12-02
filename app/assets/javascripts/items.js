@@ -8,7 +8,7 @@ var Event = {
   },
 
   ajaxitem: function(e, response) {
-    $('div.item-list').html(response.item_add)
+    $('div#item-list').html(response.item_add)
   }
 }
 

@@ -1,17 +1,15 @@
 <h1><%= @event.name %></h1>
 <h6>Location: <% if @event.address %><%= @event.address %><% else %> TBD <% end %></h2>
-<h6>Host: <%= @host.name %></h2>
+<h6>Organizer: <%= @host.name %></h2>
 
-<h4>Add Item</h4>
 <%= form_for(@item, url: event_items_path(@event), :remote => true) do |f| %>
-  Name: <%= f.text_field :name %>
-  Price:<%= f.text_field :price %>
+  Add Item: <%= f.text_field :name %>
         <%= f.submit  %>
 <% end %>
 
 <h3>List Items:</h3>
 <div class="row">
-<div class="span9">
+<div id="item-list" class="span9">
 <%= render 'items/items', items: @items %>
 </div>
 <div class="span3">
