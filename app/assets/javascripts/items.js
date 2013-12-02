@@ -20,5 +20,4 @@ var Event = {
 $(document).ready(function(){
 
   Event.init();
-
 })
