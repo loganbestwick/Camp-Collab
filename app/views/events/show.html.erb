@@ -1,6 +1,6 @@
 <h1><%= @event.name %></h1>
-<h6>Location: <%= @event.address %></h2>
-<h6>Host: <%= @host.email %></h2>
+<h6>Location: <% if @event.address %><%= @event.address %><% else %> TBD <% end %></h2>
+<h6>Host: <%= @host.name %></h2>
 
 <h4>Add Item</h4>
 <%= form_for(@item, url: event_items_path(@event), :remote => true) do |f| %>
@@ -14,5 +14,28 @@
 <div class="span9">
 <%= render 'items/items', items: @items %>
 </div>
-<div class="span3">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum rutrum libero sit amet congue bibendum. Vestibulum imperdiet arcu in pharetra dapibus. Vestibulum cursus consequat leo. Maecenas ut metus quis lorem porttitor hendrerit a tempor neque. Etiam iaculis augue non sem lacinia viverra eget eget metus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean adipiscing diam vel est venenatis, at aliquam diam hendrerit. Nulla placerat mi dolor, vitae blandit odio tristique nec. Ut auctor nibh non urna aliquet, vel aliquam erat sagittis. Aliquam vitae rutrum felis. Nulla laoreet neque ut tempor vestibulum. Mauris ultrices euismod enim non ullamcorper. Duis sed molestie enim. Sed viverra, magna a adipiscing posuere, arcu turpis semper massa, eget auctor urna elit at augue. In hac habitasse platea dictumst. Duis mollis rhoncus neque.</div>
+<div class="span3">
+
+  <%- model_class = Item -%>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Who's coming:</th>
+    </tr>
+  </thead>
+  <tbody>
+
+    <tr>
+      <td><%= @host.name %></td>
+    </tr>
+  <% @guests.each do |guest| %>
+    <tr>
+      <td><%= guest.name %></td>
+    </tr>
+  <% end %>
+</tbody>
+</table>
+
+</div>
 </div>
