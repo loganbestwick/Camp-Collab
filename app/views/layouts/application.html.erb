@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Potluck</title>
+  <title>Camp Collab</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= stylesheet_link_tag    "style", :media => "all" %>
+
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
@@ -15,7 +17,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </a>
-      <a class="brand" href="#">Some Store</a>
+      <a class="brand" href="#">Camp Collab</a>
       <div class="nav-collapse">
         <ul class="nav">
           <% if session[:host_id] %>
@@ -26,7 +28,7 @@
     </div>
   </div>
 </div>
-<div class="container-fluid">
+<div class="container">
 
 <%= yield %>
 </div>
