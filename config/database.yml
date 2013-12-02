@@ -17,6 +17,9 @@ test:
 production:
   adapter: postgresql
   encoding: unicode
-  database: potluck_production
+  host: ec2-54-204-45-196.compute-1.amazonaws.com
+  database: d7itfciacqtru6
+  user: ujiqgrvhwdpvnj
+  password: ZbEoc7ERok6zxd5HW17xZCc_9d
   pool: 5
 
