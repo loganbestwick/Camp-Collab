@@ -18,11 +18,11 @@ Campcollab::Application.routes.draw do
   resources :sessions, only: [:create, :destroy, :new]
   get 'logout', :to => 'sessions#destroy'
 
-  resources :event, only: [] do
+  resources :events, only: [] do
     resources :items, except: [:show, :edit, :new]
   end
 
-  match  '/event/:event_id/items/:id.important' => 'items#important', via: [:get]
+  match  '/events/:event_id/items/:id.important' => 'items#important', via: [:get]
 
 
 end
