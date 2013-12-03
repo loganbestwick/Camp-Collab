@@ -12,13 +12,18 @@
   </thead>
   <tbody>
 
-  <% @items.each do |item| %>
+    <% @items.each do |item| %>
     <tr class="<% if item.important == true %>important<% end %> <% if item.important == true %>purchased<% end %>">
       <td><%= item.name %></td>
       <td><%= item.description %></td>
       <td><%= check_box_tag(:important) %></td>
-      <td><% if item.purchased == false %><%= link_to "I got it", event_item_path(@event, item, :item => {:purchased => true}), :method=> :put, :class => 'btn btn-mini'%><% else %><%= Guest.find(2).name %> is bringing this<% end %></td>
+      <td><% if item.purchased == false %>
+        <%= link_to "I got it", event_item_path(@event, item, :item => {:purchased => true}), :method=> :put, :class => 'btn btn-mini'%>
+        <% else %>
+          <%= Guest.find(2).name %> is bringing this
+        <% end %>
+      </td>
     </tr>
-  <% end %>
-</tbody>
+    <% end %>
+  </tbody>
 </table>
