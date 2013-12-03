@@ -10,16 +10,13 @@
 <div id="add_item" class="hidden">
 <%= form_for(@item, url: event_items_path(@event), :remote => true) do |f| %>
   Name: <%= f.text_field :name %>
-  Price:<%= f.text_field :price %>
         <%= f.submit  %>
 <% end %>
 </div>
 <h3>List Items:</h3>
 <div class="row-fluid">
 <div id="item-list" class="span9">
-  <table class="table table-striped test">
-    <%= render 'items/items', items: @items %>
-  </table>
+  <%= render 'items/items', :items => @items, :event => @event %>
 </div>
 <div class="span3">
 
