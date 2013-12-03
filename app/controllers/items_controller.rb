@@ -11,12 +11,13 @@ class ItemsController < ApplicationController
     end
   end
 
+
   def update
     @item = Item.find(params[:id])
     @event = Event.find(params[:event_id])
     @items = Item.where(event_id: params[:event_id], purchased: false)
     @item.update_attributes(params[:item])
-    redirect_to host_event_path(session[:host_id], Event.find(params[:event_id]))
+    redirect_to host_event_path(session[:host_id], params[:event_id].to_i)
   end
 
   def destroy

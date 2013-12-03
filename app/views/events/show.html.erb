@@ -6,8 +6,17 @@
 <h6>Begins on: <% if @event.start_day %><%= @event.start_day %><% else %> No specified start day <% end %></h2>
 
 
+<h4>Invite Guest</h4>
+<%= form_for(@guest, url: event_guests_path(@event)) do |f| %>
+  Name: <%= f.text_field :name %>
+  Email: <%= f.text_field :email %>
+        <%= f.submit  %>
+<% end %>
+
 <h3 class="add_item"><%=link_to 'Add Item', :remote => true  %></h3>
 <div id="add_item" class="hidden">
+
+<h4>Add Item</h4>
 <%= form_for(@item, url: event_items_path(@event), :remote => true) do |f| %>
   Name: <%= f.text_field :name %>
         <%= f.submit  %>
