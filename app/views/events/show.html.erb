@@ -4,7 +4,7 @@
 <h6>Begins at: <% if @event.start_time %><%= @event.start_time %><% else %> No specified start time <% end %></h2>
 <h6>Begins on: <% if @event.start_day %><%= @event.start_day %><% else %> No specified start day <% end %></h2>
 <div id="event_progress_bar" class="progress progress-striped">
-  <div class="bar" style="width: <%= @completion %>%;"></div>
+  <div class="bar" style="width: <%= @completion %>%;">Camping trip is <%= @completion %>% covered.</div>
 </div>
 
 <h4>Invite Guest</h4>

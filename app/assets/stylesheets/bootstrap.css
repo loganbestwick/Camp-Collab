@@ -6890,3 +6890,6 @@ td {
   text-align: center;
 }
 
+#event_progress_bar {
+  height: 25px;
+}
