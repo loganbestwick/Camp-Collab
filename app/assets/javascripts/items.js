@@ -8,12 +8,12 @@ var Event = {
   },
 
   handleSuccess: function(e, response) {
-    debugger
+    // debugger
     $('div#item-list').html(response)
   },
 
    handleError: function(e, response) {
-    // debugger
+    //
   }
 }
 

@@ -17,7 +17,7 @@ Campcollab::Application.routes.draw do
   get 'logout', :to => 'sessions#destroy'
 
   resources :events, only: [] do
-    resources :items, except: [:show, :edit, :new]
+    resources :items
   end
 
   match  '/events/:event_id/items/:id.important' => 'items#important', via: [:get]
