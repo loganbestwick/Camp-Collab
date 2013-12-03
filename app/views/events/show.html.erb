@@ -1,14 +1,16 @@
 <h1><%= @event.name %></h1>
-<h6>Location: <% if @event.address %><%= @event.address %><% else %> TBD <% end %></h2>
-<h6>Host: <%= @host.name %></h2>
-<h6>Begins at: <% if @event.start_time %><%= @event.start_time %><% else %> No specified start time <% end %></h2>
-<h6>Begins on: <% if @event.start_day %><%= @event.start_day %><% else %> No specified start day <% end %></h2>
+<h6>Location: <% if @event.address %><%= @event.address %><% else %> TBD <% end %></h6>
+<h6>Host: <%= @host.name %></h6>
+<h6>Begins at: <% if @event.start_time %><%= @event.start_time %><% else %> No specified start time <% end %></h6>
+<h6>Begins on: <% if @event.start_day %><%= @event.start_day %><% else %> No specified start day <% end %></h6>
 
+<% if session[:host_id] %>
 <h4>Invite Guest</h4>
 <%= form_for(@guest, url: event_guests_path(@event)) do |f| %>
   Name: <%= f.text_field :name %>
   Email: <%= f.text_field :email %>
         <%= f.submit  %>
+<% end %>
 <% end %>
 
 <h4>Add Item</h4>

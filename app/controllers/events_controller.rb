@@ -21,6 +21,7 @@ class EventsController < ApplicationController
     @guests = Guest.where(event_id: @event.id)
     if session[:host_id] || Guest.exists?(token: params[:event_token], event_id: @event.id) || Guest.exists?(token: session[:guest_token], event_id: @event.id)
           session[:guest_token] = params[:event_token] if params[:event_token]
+          session[:guest_id] = Guest.where(token: params[:event_token]).first.id if params[:event_token]
       render "show"
     else
       render "fail"
