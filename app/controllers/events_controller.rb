@@ -1,7 +1,7 @@
 class EventsController < ApplicationController
 
   def index
-    @events = Event.all
+    @events = Event.where(:host_id => params[:host_id])
     @event = Event.new
     @host = Host.find(params[:host_id])
     if session[:host_id]
