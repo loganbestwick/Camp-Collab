@@ -4,9 +4,9 @@ class ItemsController < ApplicationController
     @event = Event.find(params[:event_id])
     @item = Item.new(name: params[:item][:name], price: params[:item][:price], event_id: params[:event_id])
     if @item.save
-      @items = Item.all
-      render json: {item_add: render_to_string(partial: 'items', :locals => {:items => @items})}
-    else
+      @items = Host.find(session[:host_id]).events.find(params[:event_id]).items
+      render json: render_to_string(partial: 'items', :locals => {:items => @items}).to_json
+     else
       redirect_to host_event_path(session[:host_id], @event)
     end
   end
@@ -20,6 +20,13 @@ class ItemsController < ApplicationController
   end
 
   def destroy
+    p '*'*1000
+    Item.find(params[:id]).destroy
+    # Host.find(session[:host_id]).events.find(params[:event_id]).items.find(params[:id]).destroy
+
+    @items = Event.find(params[:event_id]).items
+    # render text: "it fucking worked"
+    render json: render_to_string(partial: 'items', :locals => {:items => @items}).to_json
   end
 
   def important
@@ -29,6 +36,7 @@ class ItemsController < ApplicationController
     @item.save
     redirect_to host_event_path(session[:host_id], @event)
   end
+
 
 end
 

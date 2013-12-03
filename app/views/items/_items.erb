@@ -1,24 +1,14 @@
 <%- model_class = Item -%>
 
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th><%= model_class.human_attribute_name(:name) %></th>
-      <th><%= model_class.human_attribute_name(:description) %></th>
-      <th><%= model_class.human_attribute_name(:important) %>?</th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
+
 
   <% @items.each do |item| %>
-    <tr class="<% if item.important == true %>important<% end %> <% if item.important == true %>purchased<% end %>">
+    <tr>
       <td><%= item.name %></td>
       <td><%= item.description %></td>
       <td><%= check_box_tag(:important) %></td>
-      <td><% if item.purchased == false %><%= link_to "I got it", event_item_path(@event, item, :item => {:purchased => true}), :method=> :put, :class => 'btn btn-mini'%><% else %><%= Guest.find(2).name %> is bringing this<% end %></td>
+      <td><%= link_to "X", event_item_path(@event, item), :method => :get, :remote =>true, :class => 'dlt-item'%></td>
     </tr>
   <% end %>
-</tbody>
-</table>
+
+
