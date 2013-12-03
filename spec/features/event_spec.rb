@@ -5,7 +5,11 @@ feature 'Create Event' do
   context 'on host events display page' do
 
     it 'can create event with valid input' do
+      visit root_path
       host = Host.create name: "Logan", password: "password", email: "goob@foob.com"
+      fill_in 'email',   with: host.email
+      fill_in 'password', with: host.password
+      click_button "Log in"
       visit host_events_path(host)
       fill_in 'event_name',   with: "Test Event"
       expect{click_button "Create Event"}.to change{Event.all.count}.by(1)
@@ -14,6 +18,10 @@ feature 'Create Event' do
 
      it 'goes to the event index page is a name is not passed in to the form' do
       host = Host.create name: "Logan", password: "password", email: "goob@foob.com"
+      visit root_path
+      fill_in 'email',   with: host.email
+      fill_in 'password', with: host.password
+      click_button "Log in"
       visit host_events_path(host)
       fill_in 'event_name',   with: nil
       click_button "Create Event"
@@ -29,6 +37,10 @@ feature 'Create Event' do
 
     it 'can delete an event' do
       host = Host.create name: "Logan", password: "password", email: "goob@foob.com"
+      visit root_path
+      fill_in 'email',   with: host.email
+      fill_in 'password', with: host.password
+      click_button "Log in"
       visit host_events_path(host)
       fill_in 'event_name',   with: "Test Event"
       click_button "Create Event"
@@ -46,6 +58,10 @@ feature 'Create Event' do
 
     it 'can create a new item' do
       host = Host.create name: "Logan", password: "password", email: "goob@foob.com"
+      visit root_path
+      fill_in 'email',   with: host.email
+      fill_in 'password', with: host.password
+      click_button "Log in"
       visit host_events_path(host)
       fill_in 'event_name',   with: "New Event"
       click_button "Create Event"
