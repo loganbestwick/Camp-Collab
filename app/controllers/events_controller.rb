@@ -14,6 +14,7 @@ class EventsController < ApplicationController
   def show
     @viewable = false
     @item = Item.new
+    @guest = Guest.new
     @host  = Host.find(params[:host_id])
     @event = Event.find(params[:id])
     @items = @event.items
