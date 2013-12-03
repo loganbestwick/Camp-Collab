@@ -9,7 +9,7 @@ feature 'Signup' do
       expect {
        fill_in 'host_email',   with: "blank@blank.com"
        fill_in 'host_password', with: "password123"
-       click_button "Create Host"
+       click_button "Create Account"
        }.to change(Host, :count).by(1)
      end
 
@@ -17,7 +17,7 @@ feature 'Signup' do
       visit root_path
       fill_in 'host_email',   with: ""
       fill_in 'host_password', with: "testing"
-      click_button "Create Host"
+      click_button "Create Account"
       expect(page).to have_content("Email is invalid")
     end
 
@@ -25,7 +25,7 @@ feature 'Signup' do
       visit root_path
       fill_in 'host_email',   with: "logan@gmail.com"
       fill_in 'host_password', with: "test"
-      click_button "Create Host"
+      click_button "Create Account"
       expect(page).to have_content("Password is too short")
     end
 
