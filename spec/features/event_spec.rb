@@ -9,7 +9,7 @@ feature 'Create Event' do
       visit host_events_path(host)
       fill_in 'event_name',   with: "Test Event"
       expect{click_button "Create Event"}.to change{Event.all.count}.by(1)
-      expect(page).to have_content "Event Name: Test Event"
+      expect(page).to have_content "Test Event"
      end
 
      it 'goes to the event index page is a name is not passed in to the form' do

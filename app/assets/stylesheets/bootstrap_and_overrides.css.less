@@ -1,5 +1,14 @@
-@import "twitter/bootstrap/bootstrap";
+@import url("bootstrap.css");
 @import "twitter/bootstrap/responsive";
+
+body {
+  padding-top: 60px;
+}
+@media (max-width: 979px) {
+  body {
+    padding-top: 0px;
+  }
+}
 
 // Set the correct sprite paths
 @iconSpritePath: image-url("twitter/bootstrap/glyphicons-halflings.png");

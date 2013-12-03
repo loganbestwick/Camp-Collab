@@ -11,6 +11,7 @@ class EventsController < ApplicationController
     @host  = Host.find(params[:host_id])
     @event = Event.find(params[:id])
     @items = @event.items
+    @guests = Guest.where(event_id: @event.id)
   end
 
   def create
