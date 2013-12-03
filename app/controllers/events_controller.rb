@@ -4,14 +4,25 @@ class EventsController < ApplicationController
     @events = Event.all
     @event = Event.new
     @host = Host.find(params[:host_id])
+    if session[:host_id]
+      render "index"
+    else
+      render "fail"
+    end
   end
 
   def show
+    @viewable = false
     @item = Item.new
     @host  = Host.find(params[:host_id])
     @event = Event.find(params[:id])
     @items = @event.items
     @guests = Guest.where(event_id: @event.id)
+    if Guest.exists?(token: params[:event_token], event_id: @event.id) || session[:host_id]
+      render "show"
+    else
+      render "fail"
+    end
   end
 
   def create
