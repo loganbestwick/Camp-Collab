@@ -22,3 +22,20 @@ $(document).ready(function(){
 
   Event.init();
 })
+
+// $('td #important').change(function(){console.log("changed!")})
+$('td #important').change(function(){
+  $.ajax({
+    url: '/events/'
+  })
+})
+
+
+
+
+  // $('#checkbox_id').change(function(){
+  //       $.get('controller/action?inst_id='+$(this).val(), function(data,status){
+  //           if(status == 'success'){
+  //             alert(data)
+  //            }
+  //       })

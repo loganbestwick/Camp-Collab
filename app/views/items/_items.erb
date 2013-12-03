@@ -6,7 +6,7 @@
     <tr>
       <td><%= item.name %></td>
       <td><%= item.description %></td>
-      <td><%= check_box_tag(:important) %></td>
+      <td><%= check_box_tag(:important), item_id="<%item.id" %></td>
       <td><%= link_to "X", event_item_path(@event, item), :method => :get, :remote =>true, :class => 'dlt-item'%></td>
     </tr>
   <% end %>
