@@ -1,53 +1,54 @@
-<div id="landing_wrap">
-  <div id="landing_content">
-    <h2>Plan Your Camping Adventures Collaboratively</h2>
-  </div>
-  <div id="landing_page_row" class="row">
-    <div id="login_form" class="span5">
-      <div class="something">
-        <h1>Log in</h1>
-        <%= form_tag sessions_path, class: "login_form" do %>
-        <div class="field">
-          <%= label_tag :email %>
-          <%= text_field_tag :email, params[:email] %>
-        </div>
-        <div class="field">
-          <%= label_tag :password %>
-          <%= password_field_tag :password %>
-        </div>
-        <div class="actions"><%= submit_tag "Log in" %></div>
-        <% end %>
-      </div>
+<div id="landing_content">
+  <h2>Plan Your Camping Trips Collaboratively</h2>
+</div>
+<div id="login_row" class="row-fluid landing-row">
+  <div class="span4"></div>
+  <div id="login_form" class="span4">
+    <h1>Log in</h1>
+    <%= form_tag sessions_path, class: "login_form" do %>
+    <div class="field">
+      <%= label_tag :email %>
+      <%= text_field_tag :email, params[:email] %>
     </div>
-
-    <div id="signup_form" class="span5">
-      <div class="something">
-        <h1>Sign Up</h1>
-
-        <%= form_for @host do |f| %>
-        <% if @host.errors.any? %>
-        <div class="error_messages">
-          <h2>Form is invalid</h2>
-          <ul>
-            <% for message in @host.errors.full_messages %>
-            <li><%= message %></li>
-            <% end %>
-          </ul>
-        </div>
-        <% end %>
-        <div class="field">
-          <%= f.label :email %>
-          <%= f.text_field :email %>
-        </div>
-        <div class="field">
-          <%= f.label :password %>
-          <%= f.password_field :password %>
-        </div>
-        <div class="actions"><%= f.submit %></div>
-        <% end %>
-      </div>
-      </div>
-
+    <div class="field">
+      <%= label_tag :password %>
+      <%= password_field_tag :password %>
     </div>
+    <div class="actions"><%= submit_tag "Log in" %></div>
+    <% end %>
   </div>
+  <div class="span4"></div>
+</div>
+
+<div id="signup_row" class="row-fluid landing-row">
+  <div class="span4"></div>
+  <div id="login_form" class="span4">
+    <h1>Sign Up</h1>
+    <%= form_for @host do |f| %>
+    <% if @host.errors.any? %>
+    <div class="error_messages">
+      <h2>Form is invalid</h2>
+      <ul>
+        <% for message in @host.errors.full_messages %>
+        <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+    <% end %>
+    <div class="field">
+      <%= f.label :email %>
+      <%= f.text_field :email %>
+    </div>
+    <div class="field">
+      <%= f.label :password %>
+      <%= f.password_field :password %>
+    </div>
+    <div class="actions"><%= f.submit "Create Account" %></div>
+    <% end %>
+  </div>
+  <div class="span4"></div>
+</div>
+
+
+
 </div>

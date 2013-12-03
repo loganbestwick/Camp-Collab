@@ -6876,3 +6876,16 @@ td {
     background:#ddd;
     padding:20px;
 }
+
+#landing_content h2 {
+  text-align: center;
+}
+
+#login_form form {
+  width: 218px;
+  margin: 0 auto;
+}
+
+#login_form h1 {
+  text-align: center;
+}

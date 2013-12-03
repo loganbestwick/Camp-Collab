@@ -16,9 +16,6 @@ class ItemsController < ApplicationController
     @event = Event.find(params[:event_id])
     @items = Item.where(event_id: params[:event_id], purchased: false)
     @item.update_attributes(params[:item])
-    if @items.length == 0
-      @event.update_attributes(completed: true)
-    end
     redirect_to host_event_path(session[:host_id], Event.find(params[:event_id]))
   end
 
@@ -29,10 +26,13 @@ class ItemsController < ApplicationController
   end
 
   def important
+    @event = Event.find(params[:event_id])
     @item = Item.find(params[:id])
     @item.toggle(:important)
     @item.save
-    redirect_to host_event_path(session[:host_id], Event.find(params[:event_id]))
+    redirect_to host_event_path(session[:host_id], @event)
   end
 
 end
+
+
