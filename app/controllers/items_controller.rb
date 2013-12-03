@@ -11,6 +11,7 @@ class ItemsController < ApplicationController
     end
   end
 
+
   def update
     @item = Item.find(params[:id])
     @event = Event.find(params[:event_id])

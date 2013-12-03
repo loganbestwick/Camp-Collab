@@ -39,6 +39,7 @@ class EventsController < ApplicationController
     end
   end
 
+
   def destroy
     @host = Host.find(params[:host_id])
     @event = Event.find(params[:id])
