@@ -12,6 +12,14 @@ feature 'Create Event' do
       expect(page).to have_content "Test Event"
      end
 
+     it 'goes to the event index page is a name is not passed in to the form' do
+      host = Host.create name: "Logan", password: "password", email: "goob@foob.com"
+      visit host_events_path(host)
+      fill_in 'event_name',   with: nil
+      click_button "Create Event"
+      expect(page).to have_content("Name can't be blank")
+     end
+
    end
  end
 
@@ -46,25 +54,36 @@ feature 'Create Event' do
       expect(page).to have_content "Test Item"
     end
 
-# #Capybara appears to have an error when it runs the URI route from this test. It includes
-# #a forward slash in the URI which makes it invalid
-    it 'can change the state of an item to important' do
+    #Pending test as toggling the important attribute is currently not working
+    xit 'can change the state of an item to important' do
       host = Host.create name: "Logan", password: "password", email: "goob@foob.com"
+      event = Event.create name: "Test Event #2", host_id: host.id
+      item = Item.create name: "Test Item #2", event_id: event.id
       visit root_path
       fill_in 'email',   with: "goob@foob.com"
       fill_in 'password', with: "password"
       click_button 'Log in'
-      fill_in 'event_name',   with: "Test Event #2"
-      click_button "Create Event"
-      fill_in 'item_name', with: "Test Item #2"
-      click_button "Create Item"
-      # click_link "Important"
-      # fill_in 'event_name',   with: "New Event"
-      # click_button "Create Event"
-      # fill_in 'item_name', with: "Test Item"
-      # expect{click_button "Create Item"}.to change{Item.all.count}.by(1)
-      # expect(page).to have_content "Test Item"
+      click_link 'Test Event #2'
+      expect(page).to have_content("Test Event #2")
+      expect(page).to have_content("Test Item #2")
+      expect{click_link "Important"}.to change{item.reload.important}
+    end
+
+    it 'can change the state of an item to purchased' do
+      host = Host.create name: "Logan", password: "password", email: "goob@foob.com"
+      event = Event.create name: "Test Event #2", host_id: host.id
+      item = Item.create name: "Test Item #2", event_id: event.id
+      guest = Guest.create
+      guest_2 = Guest.create
+      visit root_path
+      fill_in 'email',   with: host.email
+      fill_in 'password', with: 'password'
+      click_button 'Log in'
+      click_link 'Test Event #2'
+      expect(page).to have_content("Test Event #2")
+      expect(page).to have_content("I got it")
+      expect{click_link "I got it"}.to change{item.reload.purchased}
     end
 
   end
- end
+end
