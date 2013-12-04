@@ -9,3 +9,16 @@
 #logoimg {
   margin: 0 auto;
 }
+
+#events_page_tabs{
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+#events_page_header {
+  text-align: center;
+}
+
+td.highlight {
+  background-color: #63D453 !important;
+}
