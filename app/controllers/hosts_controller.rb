@@ -10,6 +10,7 @@ class HostsController < ApplicationController
   def create
     @host = Host.new(params[:host])
     if @host.save
+      session[:host_id] = @host.id
       redirect_to root_url, :notice => "Signed up!"
     else
       render "index"
