@@ -1,10 +1,11 @@
 class GuestMailer < ActionMailer::Base
-  # default from: "campcollabteam@gmail.com"
 
-  # def guest_invitation(*event)
-
-  #   mail(to: "loganbestwick@gmail.com",
-  #        subject: "Logan has invited you to their trip!",
-  #        from: "campcollabteam@gmail.com")
-  # end
+  def guest_invitation(event, guest)
+    @guest = guest
+    @event = event
+    @host = Host.find(event.host_id)
+    mail(to: "#{@guest.email}",
+         subject: "#{@host.email} has invited you on a camping trip!",
+         from: "campcollabteam@gmail.com")
+  end
 end
