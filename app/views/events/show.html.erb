@@ -7,6 +7,9 @@
 <h6>Host: <%= @host.name %></h2>
 <h6>Begins at: <% if @event.start_time %><%= @event.start_time %><% else %> No specified start time <% end %></h2>
 <h6>Begins on: <% if @event.start_day %><%= @event.start_day %><% else %> No specified start day <% end %></h2>
+<div id="event_progress_bar" class="progress progress-striped">
+  <div class="bar" style="width: <%= @completion %>%;">Camping trip is <%= @completion %>% covered.</div>
+</div>
 
 <div style='width: 250px;'>
   <div id="map" style='width: 250px; height: 250px;'></div>

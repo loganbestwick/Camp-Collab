@@ -1,7 +1,7 @@
 class EventsController < ApplicationController
 
   def index
-    @events = Event.all
+    @events = Event.where(:host_id => params[:host_id])
     @event = Event.new
     @host = Host.find(params[:host_id])
     if session[:host_id]
@@ -16,21 +16,30 @@ class EventsController < ApplicationController
     @hash = Gmaps4rails.build_markers(@event) do |event, marker|
       marker.lat event.latitude
       marker.lng event.longitude
-      # marker.infowindow event.description
     end
 
     @viewable = false
     @item = Item.new
     @guest = Guest.new
+    @guests = Guest.where(event_id: @event.id)
     @host  = Host.find(params[:host_id])
     @items = @event.items
-    @guests = Guest.where(event_id: @event.id)
+    @claimed = @items.where("guest_id IS NOT NULL or host_id IS NOT NULL")
+
+    if @items != [] || @claimed != []
+      @completion = ((@claimed.size.to_f/@items.size.to_f) * 100).to_i
+    else
+      @completion = 0
+    end
+
     if session[:host_id] || Guest.exists?(token: params[:event_token], event_id: @event.id) || Guest.exists?(token: session[:guest_token], event_id: @event.id)
           session[:guest_token] = params[:event_token] if params[:event_token]
+          session[:guest_id] = Guest.find_by_token(session[:guest_token]).id if session[:guest_token]
       render "show"
     else
       render "fail"
     end
+
   end
 
   def create

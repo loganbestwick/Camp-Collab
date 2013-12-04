@@ -1,7 +1,8 @@
 <div id="landing_content">
   <h2>Plan Your Camping Trips Collaboratively</h2>
 </div>
-<div id="login_row" class="row-fluid landing-row">
+<div class="tab-content">
+<div id="login_row" class="row-fluid landing-row tab-pane active">
   <div class="span4"></div>
   <div id="login_form" class="span4">
     <h1>Log in</h1>
@@ -15,12 +16,13 @@
       <%= password_field_tag :password %>
     </div>
     <div class="actions"><%= submit_tag "Log in" %></div>
+    <a href="#signup_row" data-toggle="tab">sign up</a>
     <% end %>
   </div>
   <div class="span4"></div>
 </div>
 
-<div id="signup_row" class="row-fluid landing-row">
+<div id="signup_row" class="row-fluid landing-row tab-pane">
   <div class="span4"></div>
   <div id="login_form" class="span4">
     <h1>Sign Up</h1>
@@ -47,6 +49,7 @@
     <% end %>
   </div>
   <div class="span4"></div>
+</div>
 </div>
 
 
