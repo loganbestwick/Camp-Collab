@@ -3,11 +3,12 @@
 <table class="table table-striped">
   <thead>
     <tr>
-      <th><%= model_class.human_attribute_name(:name) %></th>
-      <th><%= model_class.human_attribute_name(:delete_event) %></th>
+
     </tr>
   </thead>
   <tbody>
+    <tr><td class="highlight"><a href="#event_form" data-toggle="tab">Create Camping Trip</a>
+</td><td class="highlight"></td></tr>
     <% @events.each do |event| %>
     <tr>
      <td> <%= link_to "#{event.name}", host_event_path(@host, event) %></td>
