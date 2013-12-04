@@ -1,7 +1,7 @@
 class EventsController < ApplicationController
 
   def index
-    @events = Event.all
+    @events = Event.where(:host_id => params[:host_id])
     @event = Event.new
     @host = Host.find(params[:host_id])
     if session[:host_id]
@@ -18,6 +18,8 @@ class EventsController < ApplicationController
     @host  = Host.find(params[:host_id])
     @event = Event.find(params[:id])
     @items = @event.items
+    @claimed = @items.where("guest_id IS NOT NULL")
+    @completion = ((@claimed.count.to_f/@items.count.to_f) * 100).to_i
     @guests = Guest.where(event_id: @event.id)
     if session[:host_id] || Guest.exists?(token: params[:event_token], event_id: @event.id) || Guest.exists?(token: session[:guest_token], event_id: @event.id)
           session[:guest_token] = params[:event_token] if params[:event_token]
