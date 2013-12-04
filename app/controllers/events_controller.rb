@@ -29,8 +29,6 @@ class EventsController < ApplicationController
     if session[:host_id] || Guest.exists?(token: params[:event_token], event_id: @event.id) || Guest.exists?(token: session[:guest_token], event_id: @event.id)
           session[:guest_token] = params[:event_token] if params[:event_token]
           session[:guest_id] = Guest.find_by_token(session[:guest_token]).id if session[:guest_token]
-      p "*" * 50
-      p session
       render "show"
     else
       render "fail"
