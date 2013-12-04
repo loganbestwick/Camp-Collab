@@ -26,7 +26,7 @@ Campcollab::Application.routes.draw do
 
   root :to => 'hosts#index'
 
-  match  '/events/:event_id/items/:id.important' => 'items#important', via: [:get]
+  match  '/events/:event_id/items/:id.important' => 'items#important', via: :get, as: :important
 
 
 end
