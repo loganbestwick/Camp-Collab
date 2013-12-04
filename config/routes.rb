@@ -2,11 +2,9 @@ Campcollab::Application.routes.draw do
 
 
 
-  resources :hosts, only: [] do
+  resources :hosts, only: [:create] do
     resources :events, only: [:index, :create, :destroy, :show]
   end
-
-  resources :hosts, only: [:create]
   # resources :event, only: [] do
   #   resources :guests
   # end
