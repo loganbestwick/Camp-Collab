@@ -13,28 +13,21 @@ class EventsController < ApplicationController
 
   def show
     @event = Event.find(params[:id])
-    @hash = Gmaps4rails.build_markers(@event) do |event, marker|
-      marker.lat event.latitude
-      marker.lng event.longitude
-    end
-
-    @viewable = false
+    @host  = Host.find(params[:host_id])
+    setup_google_maps
     @item = Item.new
     @guest = Guest.new
-    @guests = Guest.where(event_id: @event.id)
-    @host  = Host.find(params[:host_id])
-    @items = @event.items
-    @claimed = @items.where("guest_id IS NOT NULL or host_id IS NOT NULL")
 
-    if @items != [] || @claimed != []
-      @completion = ((@claimed.size.to_f/@items.size.to_f) * 100).to_i
+    @claimed = @event.items.where("guest_id IS NOT NULL or host_id IS NOT NULL")
+
+    if @event.items != [] || @claimed != []
+      @completion = ((@claimed.size.to_f/@event.items.size.to_f) * 100).to_i
     else
       @completion = 0
     end
 
-    if session[:host_id] || Guest.exists?(token: params[:event_token], event_id: @event.id) || Guest.exists?(token: session[:guest_token], event_id: @event.id)
-          session[:guest_token] = params[:event_token] if params[:event_token]
-          session[:guest_id] = Guest.find_by_token(session[:guest_token]).id if session[:guest_token]
+    if host_or_guest_exists?
+      set_guest_token_and_id
       render "show"
     else
       render "fail"
@@ -61,5 +54,24 @@ class EventsController < ApplicationController
     @specific_event = @host.events.find(params[:id])
     @specific_event.destroy
     redirect_to host_events_path(@host)
+  end
+
+  private
+  def host_or_guest_exists?
+    session[:host_id] ||
+    Guest.exists?(token: params[:event_token], event_id: @event.id) ||
+    Guest.exists?(token: session[:guest_token], event_id: @event.id)
+  end
+
+  def set_guest_token_and_id
+    session[:guest_token] = params[:event_token] if params[:event_token]
+    session[:guest_id] = Guest.find_by_token(session[:guest_token]).id if session[:guest_token]
+  end
+
+  def setup_google_maps
+    @hash = Gmaps4rails.build_markers(@event) do |event, marker|
+      marker.lat event.latitude
+      marker.lng event.longitude
+    end
   end
 end

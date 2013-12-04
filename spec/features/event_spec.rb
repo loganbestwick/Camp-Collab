@@ -12,6 +12,7 @@ feature 'Create Event' do
       click_button "Log in"
       visit host_events_path(host)
       fill_in 'event_name',   with: "Test Event"
+      fill_in 'event_address', with: "717 California"
       expect{click_button "Create Event"}.to change{Event.all.count}.by(1)
       expect(page).to have_content "Test Event"
      end
@@ -37,13 +38,11 @@ feature 'Create Event' do
 
     it 'can delete an event' do
       host = Host.create name: "Logan", password: "password", email: "goob@foob.com"
+      event = Event.create name: "whatever", host_id: 1, address: "Jenner Inn & Event Center, 25050 California 1, Jenner, CA"
       visit root_path
       fill_in 'email',   with: host.email
       fill_in 'password', with: host.password
       click_button "Log in"
-      visit host_events_path(host)
-      fill_in 'event_name',   with: "Test Event"
-      click_button "Create Event"
       visit host_events_path(host)
       expect{click_link "Delete"}.to change{Event.all.count}.by(-1)
       expect(page).to_not have_content "Test Event"
@@ -64,6 +63,7 @@ feature 'Create Event' do
       click_button "Log in"
       visit host_events_path(host)
       fill_in 'event_name',   with: "New Event"
+      fill_in 'event_address', with: '717 California'
       click_button "Create Event"
       fill_in 'item_name', with: "Test Item"
       expect{click_button "Create Item"}.to change{Item.all.count}.by(1)
@@ -87,7 +87,7 @@ feature 'Create Event' do
 
     it 'can change the state of an item to purchased' do
       host = Host.create name: "Logan", password: "password", email: "goob@foob.com"
-      event = Event.create name: "Test Event #2", host_id: host.id
+      event = Event.create name: "Test Event #2", host_id: host.id, address: "717 California"
       item = Item.create name: "Test Item #2", event_id: event.id
       guest = Guest.create
       guest_2 = Guest.create

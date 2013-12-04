@@ -32,19 +32,16 @@ handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
         <%= f.submit  %>
 <% end %>
 
-<h3 class="add_item"><%=link_to 'Add Item', :remote => true  %></h3>
-<div id="add_item" class="hidden">
-
 <h4>Add Item</h4>
 <%= form_for(@item, url: event_items_path(@event), :remote => true) do |f| %>
   Name: <%= f.text_field :name %>
         <%= f.submit  %>
 <% end %>
-</div>
+
 <h3>List Items:</h3>
 <div class="row-fluid">
 <div id="item-list" class="span9">
-  <%= render 'items/items', :items => @items, :event => @event %>
+  <%= render 'items/items', :items => @event.items, :event => @event %>
 </div>
 <div class="span3">
 
@@ -61,7 +58,7 @@ handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
     <tr>
       <td><%= @host.name %></td>
     </tr>
-  <% @guests.each do |guest| %>
+  <% @event.guests.each do |guest| %>
     <tr>
       <td><%= guest.name %></td>
     </tr>
