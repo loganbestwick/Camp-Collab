@@ -14,7 +14,7 @@ class ItemsController < ApplicationController
   def update
     @item = Item.find(params[:id])
     @event = Event.find(params[:event_id])
-    @items = Item.where(event_id: params[:event_id], purchased: false)
+    # @items = Item.where(event_id: params[:event_id], purchased: false)
     @item.update_attributes(params[:item])
     redirect_to host_event_path(session[:host_id], params[:event_id].to_i)
   end
@@ -33,7 +33,6 @@ class ItemsController < ApplicationController
     @item.save
     redirect_to host_event_path(session[:host_id], @event)
   end
-
 
 end
 
