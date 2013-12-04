@@ -1,7 +1,5 @@
 <div id="events_page_tabs" class="tab-content">
 
-
-
   <div id="events_list" class="tab-pane active">
     <a href="#event_form" data-toggle="tab">Add new event</a>
     <h1> Here are your events!</h1>
@@ -51,6 +49,8 @@
         <h2>Where is it?</h2>
         Camp Site:<%= f.text_field :camp_site %>
         Address:<%= f.text_field :address %>
+        Latitude:<%= f.text_field :latitude %>
+        Longitude:<%= f.text_field :longitude%>
         City:<%= f.text_field :city %>
         State:<%= f.text_field :state %>
         Zip:<%= f.text_field :zip %>

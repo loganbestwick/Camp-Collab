@@ -7,8 +7,11 @@ gem 'rails', '3.2.13'
 
 gem 'pg'
 gem 'debugger'
+gem 'gmaps4rails'
+gem 'geocoder'
 gem 'mandrill-rails'
 gem 'mail'
+
 
 
 # Gems used only for assets and not required

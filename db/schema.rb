@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131202185235) do
+ActiveRecord::Schema.define(:version => 20131203222323) do
 
   create_table "events", :force => true do |t|
     t.string   "name"
@@ -29,6 +29,8 @@ ActiveRecord::Schema.define(:version => 20131202185235) do
     t.date     "end_day"
     t.time     "start_time"
     t.time     "end_time"
+    t.string   "latitude"
+    t.string   "longitude"
   end
 
   create_table "guests", :force => true do |t|

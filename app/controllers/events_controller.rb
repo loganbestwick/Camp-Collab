@@ -13,18 +13,16 @@ class EventsController < ApplicationController
 
   def show
     @event = Event.find(params[:id])
+    @host  = Host.find(params[:host_id])
     @item = Item.new
     @guest = Guest.new
-    @host  = Host.find(params[:host_id])
     @claimed = @event.items.where("guest_id IS NOT NULL or host_id IS NOT NULL")
     @completion = completion(@claimed, @event.items)
-
     if check_session
       render "show"
     else
       render "fail"
     end
-
   end
 
 
@@ -49,7 +47,6 @@ class EventsController < ApplicationController
     redirect_to host_events_path(@host)
   end
 
-
   def completion(claimed, total)
     if total != [] || claimed != []
       return ((claimed.size.to_f/total.size.to_f) * 100).to_i
@@ -67,6 +64,5 @@ class EventsController < ApplicationController
       false
     end
   end
-
 
 end

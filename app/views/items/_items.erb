@@ -12,7 +12,6 @@
   </thead>
   <tbody>
 
-
     <% event.items.each do |item| %>
     <tr class="<% if item.important == true %>important<% end %> <% if item.important == true %>purchased<% end %>">
       <td><%= item.name %></td>
@@ -29,6 +28,7 @@
           <%= item_owner %> is bringing this
         <% end %>
       </td>
+      <td><%= link_to "X", event_item_path(event, item), :method => :delete, :remote =>true, :class => 'dlt-item'%></td>
     </tr>
     <% end %>
   </tbody>
