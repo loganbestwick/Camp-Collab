@@ -13,11 +13,15 @@
   <% end  %>
   Name:<%= f.text_field :name %>
   Camp Site:<%= f.text_field :camp_site %>
+  Latitude:<%= f.text_field :latitude %>
+  Longitude:<%= f.text_field :longitude%>
+
   Address:<%= f.text_field :address %>
   City:<%= f.text_field :city %>
   State:<%= f.text_field :state %>
-  Description:<%= f.text_field :description %>
   Zip:<%= f.text_field :zip %>
+  Description:<%= f.text_field :description %>
+
   <%= f.submit  %>
 <% end %>
 

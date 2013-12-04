@@ -7,6 +7,8 @@ gem 'rails', '3.2.13'
 
 gem 'pg'
 gem 'debugger'
+gem 'gmaps4rails'
+gem 'geocoder'
 
 
 # Gems used only for assets and not required

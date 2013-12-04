@@ -21,12 +21,9 @@ class ItemsController < ApplicationController
   end
 
   def destroy
-    p '*'*1000
     Item.find(params[:id]).destroy
-    # Host.find(session[:host_id]).events.find(params[:event_id]).items.find(params[:id]).destroy
     @event = Event.find(params[:event_id])
     @items = @event.items
-    # render text: "it fucking worked"
     render json: render_to_string(partial: 'items', :locals => {:items => @items, :event => @event}).to_json
   end
 

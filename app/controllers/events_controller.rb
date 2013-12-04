@@ -12,11 +12,17 @@ class EventsController < ApplicationController
   end
 
   def show
+    @event = Event.find(params[:id])
+    @hash = Gmaps4rails.build_markers(@event) do |event, marker|
+      marker.lat event.latitude
+      marker.lng event.longitude
+      # marker.infowindow event.description
+    end
+
     @viewable = false
     @item = Item.new
     @guest = Guest.new
     @host  = Host.find(params[:host_id])
-    @event = Event.find(params[:id])
     @items = @event.items
     @guests = Guest.where(event_id: @event.id)
     if session[:host_id] || Guest.exists?(token: params[:event_token], event_id: @event.id) || Guest.exists?(token: session[:guest_token], event_id: @event.id)
