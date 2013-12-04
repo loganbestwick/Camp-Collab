@@ -19,7 +19,9 @@ class EventsController < ApplicationController
     @host  = Host.find(params[:host_id])
     @items = @event.items
     @claimed = @items.where("guest_id IS NOT NULL or host_id IS NOT NULL")
-
+    p "*" * 50
+    p @items
+    p @claimed
     if @items != [] || @claimed != []
       @completion = ((@claimed.size.to_f/@items.size.to_f) * 100).to_i
     else
