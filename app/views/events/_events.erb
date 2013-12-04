@@ -12,11 +12,11 @@
     <tr>
      <td> <%= link_to "#{event.name}", host_event_path(@host, event) %></td>
      <td> <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
-                      host_event_path(@host, event),
-                      :method => :delete,
-                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
-                      :class => 'btn btn-mini btn-danger' %> </td>
-    </tr>
-  <% end %>
-</tbody>
+     host_event_path(@host, event),
+     :method => :delete,
+     :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+     :class => 'btn btn-mini btn-danger' %> </td>
+   </tr>
+   <% end %>
+ </tbody>
 </table>
