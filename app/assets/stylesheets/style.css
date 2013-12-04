@@ -1,3 +1,11 @@
 .landing_page_link {
   color: white;
 }
+
+#logo {
+  text-align: center;
+}
+
+#logoimg {
+  margin: 0 auto;
+}

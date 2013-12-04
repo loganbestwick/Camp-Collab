@@ -1,5 +1,6 @@
 <div id="landing_content">
-  <h2>Plan Camping Trips With Your Friends</h2>
+
+  <div id="logo"><img src="assets/logo.png" id="logoimg"/></div>
 </div>
 <div class="tab-content">
 
@@ -8,10 +9,10 @@
     <div id="login_form" class="span4">
       <%= form_tag sessions_path, class: "login_form" do %>
       <div class="field">
-        <%= text_field_tag :email, params[:email], :placeholder => "email" %>
+        <%= text_field_tag :email, params[:email], :placeholder => "email", :id => "login_email" %>
       </div>
       <div class="field">
-        <%= password_field_tag :password, "", :placeholder => "password" %>
+        <%= password_field_tag :password, "", :placeholder => "password",  :id => "login_password"  %>
       </div>
       <div class="actions"><%= submit_tag "Log in", :class => "btn btn-success", :style => "width: 100%;" %></div>
       <a href="#signup_row" class="landing_page_link" data-toggle="tab">Create Account</a>
