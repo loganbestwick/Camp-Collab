@@ -91,6 +91,7 @@ feature 'Create Event' do
       item = Item.create name: "Test Item #2", event_id: event.id
       guest = Guest.create
       guest_2 = Guest.create
+      guest_3 = Guest.create
       visit root_path
       fill_in 'email',   with: host.email
       fill_in 'password', with: 'password'
