@@ -6894,3 +6894,7 @@ td {
   height: 25px;
   max-width: 600px;
 }
+
+.landing_button {
+  width: 100%;
+}
