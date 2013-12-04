@@ -28,7 +28,7 @@
 <h3>List Items:</h3>
 <div class="row-fluid">
 <div id="item-list" class="span9">
-  <%= render 'items/items', :items => @items, :event => @event %>
+  <%= render 'items/items', :items => @event.items, :event => @event %>
 </div>
 <div class="span3">
 
@@ -43,9 +43,9 @@
   <tbody>
 
     <tr>
-      <td><%= @host.name %></td>
+      <td><%= @event.host.name %></td>
     </tr>
-  <% @guests.each do |guest| %>
+  <% @event.guests.each do |guest| %>
     <tr>
       <td><%= guest.name %></td>
     </tr>

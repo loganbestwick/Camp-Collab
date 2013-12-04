@@ -15,28 +15,18 @@ class EventsController < ApplicationController
     @event = Event.find(params[:id])
     @item = Item.new
     @guest = Guest.new
-    @guests = Guest.where(event_id: @event.id)
     @host  = Host.find(params[:host_id])
-    @items = @event.items
-    @claimed = @items.where("guest_id IS NOT NULL or host_id IS NOT NULL")
-    p "*" * 50
-    p @items
-    p @claimed
-    if @items != [] || @claimed != []
-      @completion = ((@claimed.size.to_f/@items.size.to_f) * 100).to_i
-    else
-      @completion = 0
-    end
+    @claimed = @event.items.where("guest_id IS NOT NULL or host_id IS NOT NULL")
+    @completion = completion(@claimed, @event.items)
 
-    if session[:host_id] || Guest.exists?(token: params[:event_token], event_id: @event.id) || Guest.exists?(token: session[:guest_token], event_id: @event.id)
-          session[:guest_token] = params[:event_token] if params[:event_token]
-          session[:guest_id] = Guest.find_by_token(session[:guest_token]).id if session[:guest_token]
+    if check_session
       render "show"
     else
       render "fail"
     end
 
   end
+
 
   def create
     @events = Event.all
@@ -58,4 +48,25 @@ class EventsController < ApplicationController
     @specific_event.destroy
     redirect_to host_events_path(@host)
   end
+
+
+  def completion(claimed, total)
+    if total != [] || claimed != []
+      return ((claimed.size.to_f/total.size.to_f) * 100).to_i
+    else
+      return 0
+    end
+  end
+
+  def check_session
+    if session[:host_id] || Guest.exists?(token: params[:event_token], event_id: @event.id) || Guest.exists?(token: session[:guest_token], event_id: @event.id)
+          session[:guest_token] = params[:event_token] if params[:event_token]
+          session[:guest_id] = Guest.find_by_token(session[:guest_token]).id if session[:guest_token]
+      true
+    else
+      false
+    end
+  end
+
+
 end
