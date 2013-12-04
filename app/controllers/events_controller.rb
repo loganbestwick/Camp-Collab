@@ -12,21 +12,30 @@ class EventsController < ApplicationController
   end
 
   def show
-    @viewable = false
+    @event = Event.find(params[:id])
     @item = Item.new
     @guest = Guest.new
-    @host  = Host.find(params[:host_id])
-    @event = Event.find(params[:id])
-    @items = @event.items
-    @claimed = @items.where("guest_id IS NOT NULL")
-    @completion = ((@claimed.count.to_f/@items.count.to_f) * 100).to_i
     @guests = Guest.where(event_id: @event.id)
+    @host  = Host.find(params[:host_id])
+    @items = @event.items
+    @claimed = @items.where("guest_id IS NOT NULL or host_id IS NOT NULL")
+
+    if @items != [] || @claimed != []
+      @completion = ((@claimed.size.to_f/@items.size.to_f) * 100).to_i
+    else
+      @completion = 0
+    end
+
     if session[:host_id] || Guest.exists?(token: params[:event_token], event_id: @event.id) || Guest.exists?(token: session[:guest_token], event_id: @event.id)
           session[:guest_token] = params[:event_token] if params[:event_token]
+          session[:guest_id] = Guest.find_by_token(session[:guest_token]).id if session[:guest_token]
+      p "*" * 50
+      p session
       render "show"
     else
       render "fail"
     end
+
   end
 
   def create

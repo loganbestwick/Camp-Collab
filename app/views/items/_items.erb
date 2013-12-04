@@ -20,9 +20,14 @@
       <td><%= item.description %></td>
       <td><%= check_box_tag(:important) %></td>
       <td><% if item.purchased == false %>
-        <%= link_to "I got it", event_item_path(@event, item, :item => {:purchased => true}), :method=> :put, :class => 'btn btn-mini'%>
+        <%= link_to "I got it", event_item_path(@event, item, :item => {:purchased => true, :guest_id => session[:guest_id], :host_id => session[:host_id]}), :method=> :put, :class => 'btn btn-mini'%>
         <% else %>
-          <%= item.guest.name if item.guest_id != nil %> is bringing this
+        <% if item.host_id != nil %>
+          <% item_owner = Host.find(item.host_id).name %>
+        <% else %>
+          <% item_owner = item.guest.name %>
+        <% end %>
+          <%= item_owner %> is bringing this
         <% end %>
       </td>
     </tr>
