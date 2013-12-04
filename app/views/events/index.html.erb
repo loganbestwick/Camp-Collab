@@ -9,40 +9,40 @@
 
   <div id="event_form" class="tab-pane">
 
-      <%= form_for(@event, url: host_events_path(@host)) do |f| %>
-      <% if @event.errors.any? %>
-      <div class="error_messages">
-        <h2>Form is invalid</h2>
-        <ul>
-          <% for message in @event.errors.full_messages %>
-          <li><%= message %></li>
-          <% end %>
-        </ul>
-      </div>
-      <% end  %>
+    <%= form_for(@event, url: host_events_path(@host)) do |f| %>
+    <% if @event.errors.any? %>
+    <div class="error_messages">
+      <h2>Form is invalid</h2>
+      <ul>
+        <% for message in @event.errors.full_messages %>
+        <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+    <% end  %>
 
-      <div id="event_form_tabs" class="tab-content">
+    <div id="event_form_tabs" class="tab-content">
 
       <div id="event_name_form" class="tab-pane active">
         <h2>What's the name of your camping trip?</h2>
         Name:<%= f.text_field :name %>
-          <button class="btn" id="nexttab" type="button">Continue</button>
+        <button class="btn" id="nexttab" type="button">Continue</button>
       </div>
 
       <div id="event_start_date_form" class="tab-pane">
         <h2>When is it?</h2>
         Date:<%= f.text_field :start_day %>
         Time:<%= f.text_field :start_time %>
-          <button class="btn" id="prevtab" type="button">Go back</button>
-          <button class="btn" id="nexttab" type="button">Continue</button>
+        <button class="btn" id="prevtab" type="button">Go back</button>
+        <button class="btn" id="nexttab" type="button">Continue</button>
       </div>
 
       <div id="event_end_date_form" class="tab-pane">
         <h2>When does it end?</h2>
         End Date:<%= f.text_field :end_day %>
         End Time:<%= f.text_field :end_time %>
-          <button class="btn" id="prevtab" type="button">Go back</button>
-          <button class="btn" id="nexttab" type="button">Continue</button>
+        <button class="btn" id="prevtab" type="button">Go back</button>
+        <button class="btn" id="nexttab" type="button">Continue</button>
       </div>
 
       <div id="event_location_form" class="tab-pane">
@@ -54,14 +54,14 @@
         City:<%= f.text_field :city %>
         State:<%= f.text_field :state %>
         Zip:<%= f.text_field :zip %>
-          <button class="btn" id="prevtab" type="button">Go back</button>
-          <button class="btn" id="nexttab" type="button">Continue</button>
+        <button class="btn" id="prevtab" type="button">Go back</button>
+        <button class="btn" id="nexttab" type="button">Continue</button>
       </div>
 
       <div id="event_camp_site_form" class="tab-pane">
         <h2>Any other details?</h2>
         Description:<%= f.text_field :description %>
-          <button class="btn" id="prevtab" type="button">Go back</button>
+        <button class="btn" id="prevtab" type="button">Go back</button>
         <%= f.submit  %>
       </div>
 

@@ -4,66 +4,68 @@
 
 <h1><%= @event.name %></h1>
 <h6>Location: <% if @event.address %><%= @event.address %><% else %> TBD <% end %></h2>
+
+
 <h6>Host: <%= @host.name %></h2>
-<h6>Begins at: <% if @event.start_time %><%= @event.start_time %><% else %> No specified start time <% end %></h2>
-<h6>Begins on: <% if @event.start_day %><%= @event.start_day %><% else %> No specified start day <% end %></h2>
-<div id="event_progress_bar" class="progress progress-striped">
-  <div class="bar" style="width: <%= @completion %>%;">Camping trip is <%= @completion %>% covered.</div>
-</div>
+  <h6>Begins at: <% if @event.start_time %><%= @event.start_time %><% else %> No specified start time <% end %></h2>
+    <h6>Begins on: <% if @event.start_day %><%= @event.start_day %><% else %> No specified start day <% end %></h2>
+      <div id="event_progress_bar" class="progress progress-striped">
+        <div class="bar" style="width: <%= @completion %>%;">Camping trip is <%= @completion %>% covered.</div>
+      </div>
 
-<div style='width: 250px;'>
-  <div id="map" style='width: 250px; height: 250px;'></div>
-</div>
+      <div style='width: 250px;'>
+        <div id="map" style='width: 250px; height: 250px;'></div>
+      </div>
 
-<script type="text/javascript">
-handler = Gmaps.build('Google');
-handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
-  markers = handler.addMarkers(<%=raw @hash.to_json %>);
-  handler.bounds.extendWith(markers);
-  handler.fitMapToBounds();
-});
-</script>
+      <script type="text/javascript">
+      handler = Gmaps.build('Google');
+      handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
+        markers = handler.addMarkers(<%=raw @hash.to_json %>);
+        handler.bounds.extendWith(markers);
+        handler.fitMapToBounds();
+      });
+      </script>
 
-<h4>Invite Guest</h4>
-<%= form_for(@guest, url: event_guests_path(@event)) do |f| %>
-  Name: <%= f.text_field :name %>
-  Email: <%= f.text_field :email %>
-        <%= f.submit  %>
-<% end %>
+      <h4>Invite Guest</h4>
+      <%= form_for(@guest, url: event_guests_path(@event)) do |f| %>
+      Name: <%= f.text_field :name %>
+      Email: <%= f.text_field :email %>
+      <%= f.submit  %>
+      <% end %>
 
-<h4>Add Item</h4>
-<%= form_for(@item, url: event_items_path(@event), :remote => true) do |f| %>
-  Name: <%= f.text_field :name %>
-        <%= f.submit  %>
-<% end %>
+      <h4>Add Item</h4>
+      <%= form_for(@item, url: event_items_path(@event), :remote => true) do |f| %>
+      Name: <%= f.text_field :name %>
+      <%= f.submit  %>
+      <% end %>
 
-<h3>List Items:</h3>
-<div class="row-fluid">
-<div id="item-list" class="span9">
-  <%= render 'items/items', :items => @event.items, :event => @event %>
-</div>
-<div class="span3">
+      <h3>List Items:</h3>
+      <div class="row-fluid">
+        <div id="item-list" class="span9">
+          <%= render 'items/items', :items => @event.items, :event => @event %>
+        </div>
+        <div class="span3">
 
-  <%- model_class = Item -%>
+          <%- model_class = Item -%>
 
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th>Who's coming:</th>
-    </tr>
-  </thead>
-  <tbody>
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>Who's coming:</th>
+              </tr>
+            </thead>
+            <tbody>
 
-    <tr>
-      <td><%= @host.name %></td>
-    </tr>
-  <% @event.guests.each do |guest| %>
-    <tr>
-      <td><%= guest.name %></td>
-    </tr>
-  <% end %>
-</tbody>
-</table>
+              <tr>
+                <td><%= @event.host.name %></td>
+              </tr>
+              <% @event.guests.each do |guest| %>
+              <tr>
+                <td><%= guest.name %></td>
+              </tr>
+              <% end %>
+            </tbody>
+          </table>
 
-</div>
-</div>
+        </div>
+      </div>
