@@ -9,13 +9,10 @@ var Event = {
   },
 
   handleItem: function(e, response) {
-    $('#item_name').val('')
     $('div#item-list').html(response)
   },
 
   handleGuest: function(e, response){
-    $('#guest_name').val('')
-    $('#guest_email').val('')
     $('div#guest-list').html(response)
   },
 

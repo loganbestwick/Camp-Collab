@@ -9,6 +9,7 @@
 <h6>Host: <%= @host.name %></h2>
   <h6>Begins at: <% if @event.start_time %><%= @event.start_time.strftime("%l:%M %P") %><% else %> No specified start time <% end %></h2>
     <h6>Begins on: <% if @event.start_day %><%= @event.start_day %><% else %> No specified start day <% end %></h2>
+
       <div id="event_progress_bar" class="progress progress-striped">
         <div class="bar" style="width: <%= @completion %>%;">Camping trip is <%= @completion %>% covered.</div>
       </div>
@@ -31,7 +32,7 @@
       </script>
 
       <h4>Invite Guest</h4>
-      <%= form_for(@guest, url: event_guests_path(@event)) do |f| %>
+      <%= form_for(@guest, url: event_guests_path(@event), :remote => true) do |f| %>
       Name: <%= f.text_field :name %>
       Email: <%= f.text_field :email %>
       <%= f.submit  %>
@@ -48,28 +49,7 @@
         <div id="item-list" class="span9">
           <%= render 'items/items', :items => @event.items, :event => @event %>
         </div>
-        <div class="span3">
-
-          <%- model_class = Item -%>
-
-          <table class="table table-striped">
-            <thead>
-              <tr>
-                <th>Who's coming:</th>
-              </tr>
-            </thead>
-            <tbody>
-
-              <tr>
-                <td><%= @event.host.name %></td>
-              </tr>
-              <% @event.guests.each do |guest| %>
-              <tr>
-                <td><%= guest.name %></td>
-              </tr>
-              <% end %>
-            </tbody>
-          </table>
-
+        <div class="span3" id="guest-list">
+         <%= render 'guests/guests', :event => @event %>
         </div>
       </div>

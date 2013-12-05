@@ -16,10 +16,10 @@
     <tr class="<% if item.important == true %>important<% end %> <% if item.important == true %>purchased<% end %>">
       <td><%= item.name %></td>
       <td><%= item.description %></td>
-      <td><%= link_to "Green eggs and ham", important_path(event, item) %> </td>
+      <td><%= link_to "Green eggs and ham", important_path(event, item), :remote => true, :class =>"add_importance"%></td>
       <td>
         <% if item.purchased == false %>
-          <%= link_to "I got it", event_item_path(event, item, :item => {:purchased => true, :guest_id => session[:guest_id], :host_id => session[:host_id]}), :method=> :put, :class => 'btn btn-mini'%>
+          <%= link_to "I got it", event_item_path(event, item, :item => {:purchased => true, :guest_id => session[:guest_id], :host_id => session[:host_id]}), :method=> :put, :class => 'btn btn-mini', :remote => true%>
         <% else %>
 
         <% if item.host_id != nil %>
@@ -28,7 +28,7 @@
           <% item_owner = item.guest.name %>
         <% end %>
         <%= item_owner %> is bringing this
-        <%= link_to "Don't got it! :(", event_item_path(event, item, :item => {:purchased => false, :guest_id => nil, :host_id => nil}), :method => :put %>
+        <%= link_to "Don't got it! :(", event_item_path(event, item, :item => {:purchased => false, :guest_id => nil, :host_id => nil}), :method => :put, :remote => true, :class => 'unclaim' %>
         <% end %>
       </td>
       <td><%= link_to "X", event_item_path(event, item), :method => :delete, :remote =>true, :class => 'dlt-item'%></td>
