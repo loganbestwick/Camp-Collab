@@ -35,13 +35,13 @@
       <%= form_for(@guest, url: event_guests_path(@event), :remote => true) do |f| %>
       Name: <%= f.text_field :name %>
       Email: <%= f.text_field :email %>
-      <%= f.submit  %>
+      <%= f.submit :class => "btn btn-success" %>
       <% end %>
 
       <h4>Add Item</h4>
       <%= form_for(@item, url: event_items_path(@event), :remote => true) do |f| %>
       Name: <%= f.text_field :name %>
-      <%= f.submit  %>
+      <%= f.submit :class => "btn btn-success" %>
       <% end %>
 
       <h3>List Items:</h3>
