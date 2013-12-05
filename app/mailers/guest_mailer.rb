@@ -5,7 +5,7 @@ class GuestMailer < ActionMailer::Base
     @event = event
     @host = Host.find(event.host_id)
     mail(to: "#{@guest.email}",
-         subject: "#{@host.email} has invited you on a camping trip!",
+         subject: "#{@host.name} has invited you on a camping trip!",
          from: "campcollabteam@gmail.com")
   end
 end

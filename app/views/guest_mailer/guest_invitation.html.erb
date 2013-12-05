@@ -1,5 +1,5 @@
-<p><%= @guest.name %>,</p>
-<p>Your friend <%= @host.name %> has invited you to go on an upcoming camping trip. Follow this <a href="camp-collab.herokuapp.com/hosts/<%= @host.id %>/events/<%= @event.id %>/<%= @guest.token %>">link</a> to view the trip details and view the list of items that are needed to make the trip successful.</p>
-<p>From everyone at Camp Collab, we hope you have an amazing trip!</p>
-<p>From,</p>
+<p>Dear <%= @guest.name %>,</p>
+<p>Your friend <%= @host.name %> has invited you to come camping near <%= @event.address %>. <%= @host.name %> has described this trip as:</p><p>"<%= @event.description %>"</p><p> Follow this <a href="camp-collab.herokuapp.com/hosts/<%= @host.id %>/events/<%= @event.id %>/<%= @guest.token %>">link</a> learn more about the trip and to view a list of items that are needed to get out in the wild and have an amazing time. Hurry, <%= @host.name %> is counting on you to make this trip a success.
+<p>We hope that you have an amazing time out there and that you don't get eaten by anything large and scary!</p>
+<p>Happy Trails,</p>
 <p>Camp Collab Team</p>
