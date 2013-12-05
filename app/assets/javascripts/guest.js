@@ -16,7 +16,7 @@ var Event = {
     $('div#guest-list').html(response)
   },
 
-   handleError: function(e, response) {
+  handleError: function(e, response) {
   },
 }
 

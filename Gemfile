@@ -6,12 +6,10 @@ gem 'rails', '3.2.13'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'pg'
-gem 'debugger'
 gem 'gmaps4rails'
 gem 'geocoder'
 gem 'mandrill-rails'
 gem 'mail'
-
 gem 'pickadate-rails'
 
 # Gems used only for assets and not required
