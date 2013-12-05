@@ -71,8 +71,8 @@ feature 'Create Event' do
         guest_3 = Guest.create
         visit host_event_path(host, event)
         expect(page).to have_content("Test Event #2")
-        expect(page).to have_content("I got it")
-        expect{click_link "I got it"}.to change{item.reload.purchased}
+        expect(page).to have_content("I will bring this")
+        expect{click_link "I will bring this"}.to change{item.reload.purchased}
       end
 
       it 'can remove an item from an events page' do
@@ -83,8 +83,8 @@ feature 'Create Event' do
         guest_3 = Guest.create
         visit host_event_path(host, event)
         expect(page).to have_content("Test Event #2")
-        expect(page).to have_content("I got it")
-        expect{click_link "X"}.to change{Item.all}
+        expect(page).to have_content("I will bring this")
+        expect{click_link "delete"}.to change{Item.all}
       end
 
     end
