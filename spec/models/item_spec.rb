@@ -2,11 +2,13 @@ require 'spec_helper'
 
 describe Item do
   context "testing item validations" do
-
-    it "validates presence of name" do
-      expect{Item.create name: "logan"}.to change{Item.all.count}.by(1)
-      expect{Item.create name: nil}.to_not change{Item.all.count}
+    context "#validations" do
+      it { should validate_presence_of :name }
     end
 
+    context "associations" do
+      it { should belong_to :guest }
+      it { should belong_to :event }
+    end
   end
 end
