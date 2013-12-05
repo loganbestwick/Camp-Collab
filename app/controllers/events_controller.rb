@@ -29,6 +29,17 @@ class EventsController < ApplicationController
     end
   end
 
+  def edit
+    @event = Event.find(params[:id])
+  end
+
+  def update
+    @event = Event.find(params[:id])
+    coordinates = get_longitude_latitude(params[:event][:address])
+    update_params_long_lat(coordinates)
+    @event.update_attributes(params[:event])
+    redirect_to host_event_path(@event.host_id, @event)
+  end
 
   def create
     @events = Event.all
@@ -67,6 +78,18 @@ class EventsController < ApplicationController
     else
       false
     end
+  end
+
+  def get_longitude_latitude(address)
+    google_map_results = Geocoder.search(address)
+    latitude = google_map_results[0].data["geometry"]["location"]["lat"]
+    longitude = google_map_results[0].data["geometry"]["location"]["lng"]
+    {:latitude => latitude, :longitude => longitude}
+  end
+
+  def update_params_long_lat(coordinates)
+    params[:event][:longitude] = coordinates[:longitude]
+    params[:event][:latitude] = coordinates[:latitude]
   end
 
 end
