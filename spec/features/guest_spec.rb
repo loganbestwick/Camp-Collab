@@ -15,7 +15,7 @@ feature 'Create Guest' do
       click_link "Test Event #2"
       fill_in "guest_name", with: "Logan"
       fill_in "guest_email", with: "yougert2k@2gmail.com"
-      click_button "Create Guest"
+      click_button "Send Invitation"
       expect(page).to have_content "Logan"
     end
   end

@@ -27,3 +27,24 @@ td.highlight {
   float: right;
 }
 
+/*#add_guest_form form, #add_item_form form{
+  text-align: center;
+}*/
+
+/*#add_guest_form form, #add_item_form form{
+  text-align: center;
+}*/
+
+#add_guest_form form input[type=text], #add_item_form form input[type=text] {
+  width: 100%;
+}
+
+
+#map-wrapper{
+  width: 200px;
+}
+
+#invite_guests h4, #add_items h4 {
+  text-align: center;
+}
+
