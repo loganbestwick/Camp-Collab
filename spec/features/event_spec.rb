@@ -12,14 +12,14 @@ feature 'Create Event' do
       visit host_events_path(host)
       fill_in 'event_name',   with: "Test Event"
       fill_in 'event_address', with: "717 California"
-      expect{click_button "Create Event"}.to change{Event.all.count}.by(1)
-      expect(page).to have_content "Test Event"
-    end
+      expect{click_button "Create Camping Trip"}.to change{Event.all.count}.by(1)
+      expect(page).to have_content "Congratulations"
+     end
 
     it 'goes to the event index page is a name is not passed in to the form' do
       visit host_events_path(host)
       fill_in 'event_name',   with: nil
-      click_button "Create Event"
+      click_button "Create Camping Trip"
       expect(page).to have_content("Name can't be blank")
     end
 
@@ -43,15 +43,16 @@ feature 'Create Event' do
 
     context 'on single event page' do
 
-      it 'can create a new item' do
-        visit host_events_path(host)
-        fill_in 'event_name',   with: "New Event"
-        fill_in 'event_address', with: '717 California'
-        click_button "Create Event"
-        fill_in 'item_name', with: "Test Item"
-        expect{click_button "Create Item"}.to change{Item.all.count}.by(1)
-        expect(page).to have_content "Test Item"
-      end
+    it 'can create a new item' do
+      visit host_events_path(host)
+      fill_in 'event_name',   with: "New Event"
+      fill_in 'event_address', with: '717 California'
+      click_button "Create Camping Trip"
+      click_link "Let me get started already!"
+      fill_in 'item_name', with: "Test Item"
+      expect{click_button "Create Item"}.to change{Item.all.count}.by(1)
+      expect(page).to have_content "Test Item"
+    end
 
     #Pending test as toggling the important attribute is currently not working
     xit 'can change the state of an item to important' do

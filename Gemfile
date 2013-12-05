@@ -12,7 +12,7 @@ gem 'geocoder'
 gem 'mandrill-rails'
 gem 'mail'
 
-
+gem 'pickadate-rails'
 
 # Gems used only for assets and not required
 # in production environments by default.

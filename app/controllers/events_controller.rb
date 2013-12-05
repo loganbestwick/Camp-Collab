@@ -47,11 +47,12 @@ class EventsController < ApplicationController
     @event = Event.create(params[:event])
     @host.events << @event
     if @event.save
-      redirect_to host_event_path(@host, @event)
+      render :creation
     else
       render "index"
     end
   end
+  # redirect_to host_event_path(@host, @event)
 
 
   def destroy
