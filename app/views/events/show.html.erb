@@ -41,12 +41,14 @@
       <% end %>
 
 
-
+    <div id="event_progress_bar" class="progress progress-striped">
+      <div class="bar" style="width: <%= @completion %>%;">Camping trip is <%= @completion %>% covered.</div>
+    </div>
 
       <h3>List Items:</h3>
       <div class="row-fluid">
         <div id="item-list" class="span9">
-          <%= render 'items/items', :items => @event.items, :event => @event, :completion => @completion %>
+          <%= render 'items/items', :items => @event.items, :event => @event %>
         </div>
         <div class="span3" id="guest-list">
          <%= render 'guests/guests', :event => @event %>
