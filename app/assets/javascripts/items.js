@@ -14,6 +14,8 @@ var Event = {
   },
 
   handleGuest: function(e, response){
+    $('#guest_name').val('')
+    $('#guest_email').val('')
     $('div#guest-list').html(response)
   },
 

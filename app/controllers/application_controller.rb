@@ -5,6 +5,6 @@ class ApplicationController < ActionController::Base
     render json: render_to_string(partial: 'items', :locals => {:items => @items, :event => @event}).to_json
   end
   def render_guests_partial
-    render json: render_to_string(partial: 'guest', :locals => {:event => @event}).to_json
+   render json: render_to_string(partial: 'guests', :locals => {:event => @event}).to_json
   end
 end
