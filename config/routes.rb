@@ -3,7 +3,7 @@ Campcollab::Application.routes.draw do
 
 
   resources :hosts, only: [:create] do
-    resources :events, only: [:index, :create, :destroy, :show]
+    resources :events, only: [:index, :create, :edit, :destroy, :show, :update]
   end
   # resources :event, only: [] do
   #   resources :guests

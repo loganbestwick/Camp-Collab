@@ -1,0 +1,11 @@
+    <%= form_for :event, url: host_event_path(@event.host_id, @event), :method => "put" do |f| %>
+        Name: <%= f.text_field :name %>
+        Location: <%= f.text_field :address %>
+        Start Date: <%= f.text_field :start_day %>
+        Start Time: <%= f.text_field :start_time %>
+        End Date: <%= f.text_field :end_day %>
+        End Time: <%= f.text_field :end_time %>
+        <%= f.text_field :latitude %>
+        <%= f.text_field :longitude %>
+        <%= f.submit "Update" %>
+    <% end %>
