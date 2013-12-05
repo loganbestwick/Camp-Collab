@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 feature 'Signup' do
-
+  let!(:host) { FactoryGirl.create :host }
   context 'on landing page' do
 
     it "can create account with valid input" do
@@ -13,7 +13,7 @@ feature 'Signup' do
        }.to change(Host, :count).by(1)
      end
 
-    it "redirects to root page if incorrect sign up email info is passed" do
+     it "redirects to root page if incorrect sign up email info is passed" do
       visit root_path
       fill_in 'host_email',   with: ""
       fill_in 'host_password', with: "testing"
@@ -29,50 +29,45 @@ feature 'Signup' do
       expect(page).to have_content("Password is too short")
     end
 
-   end
- end
-
- feature 'Sign out' do
-
-  context 'events page' do
-
-    it "can log user out" do
-      current_user = Host.create name: 'guy', password: "password123", email: "a@b.com"
-      visit root_path
-      fill_in 'login_email',   with: "a@b.com"
-      fill_in 'login_password', with: "password123"
-      click_button "Log in"
-      click_link "Logout"
-      uri = URI.parse(current_url)
-      "#{uri.path}#{uri.query}".should == root_path
-
-     end
-
-   end
- end
+  end
 
 
- feature 'log in' do
-  context 'on landing page' do
-    it "can log in with valid input (testing url)" do
-      visit root_path
-      current_host = Host.create name: 'guy', password: "password123", email: "a@b.com"
-      fill_in 'login_email',   with: "a@b.com"
-      fill_in 'login_password', with: "password123"
-      click_button "Log in"
-      uri = URI.parse(current_url)
-      "#{uri.path}#{uri.query}".should == host_events_path(current_host)
+
+  describe 'Sign out' do
+    before(:each) do
+      web_login host
     end
+    context 'events page' do
 
-    it "can't log in with invalid input (testing url)" do
-      visit root_path
-      current_host = Host.create name: 'guy', password: "password123", email: "a@b.com"
-      fill_in 'login_email',   with: "a@b.com"
-      fill_in 'login_password', with: "wefwefwefwef"
-      click_button "Log in"
-      uri = URI.parse(current_url)
-      "#{uri.path}#{uri.query}".should == root_path
+      it "can log user out" do
+        click_link "Logout"
+        uri = URI.parse(current_url)
+        "#{uri.path}#{uri.query}".should == root_path
+
+      end
+
     end
+  end
 
+  describe 'log in' do
+    context 'on landing page' do
+      it "can log in with valid input (testing url)" do
+        current_host = Host.create name: 'guy', password: "password123", email: "a@b.com"
+        web_login current_host
+        uri = URI.parse(current_url)
+        "#{uri.path}#{uri.query}".should == host_events_path(current_host)
+      end
+
+      it "can't log in with invalid input (testing url)" do
+        current_host = Host.create name: 'guy', password: "password123", email: "a@b.com"
+        visit root_path
+        fill_in 'login_email',   with: "a@b.com"
+        fill_in 'login_password', with: "wefwefwefwef"
+        click_button "Log in"
+        uri = URI.parse(current_url)
+        "#{uri.path}#{uri.query}".should == root_path
+      end
+
+    end
   end
 end

@@ -58,6 +58,11 @@ GEM
     diff-lcs (1.2.5)
     erubis (2.7.0)
     execjs (2.0.2)
+    factory_girl (4.3.0)
+      activesupport (>= 3.0.0)
+    factory_girl_rails (4.3.0)
+      factory_girl (~> 4.3.0)
+      railties (>= 3.0.0)
     ffi (1.9.3)
     geocoder (1.1.8)
     gmaps4rails (2.1.1)
@@ -139,6 +144,8 @@ GEM
       multi_json (~> 1.0)
       rubyzip (~> 1.0.0)
       websocket (~> 1.0.4)
+    shoulda-matchers (2.4.0)
+      activesupport (>= 3.0.0)
     simplecov (0.7.1)
       multi_json (~> 1.0)
       simplecov-html (~> 0.7.1)
@@ -178,6 +185,7 @@ DEPENDENCIES
   coffee-rails (~> 3.2.1)
   database_cleaner
   debugger
+  factory_girl_rails
   geocoder
   gmaps4rails
   jquery-rails
@@ -190,6 +198,7 @@ DEPENDENCIES
   rspec-rails (~> 2.0)
   sass-rails (~> 3.2.3)
   selenium-webdriver
+  shoulda-matchers
   simplecov
   therubyracer
   twitter-bootstrap-rails
