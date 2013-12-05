@@ -10,12 +10,13 @@ feature 'Create Guest' do
 
   context 'single event page' do
     it 'can add a guest to an event' do
-      visit host_event_path(host, event)
-      click_link "logan"
+      event = Event.create name: "Test Event #2", host_id: host.id, address: "717 California"
+      visit host_events_path(host)
+      click_link "Test Event #2"
       fill_in "guest_name", with: "Logan"
       fill_in "guest_email", with: "yougert2k@2gmail.com"
-      expect{click_button "Create Guest"}.to
-
+      click_button "Create Guest"
+      expect(page).to have_content "Logan"
     end
   end
 end

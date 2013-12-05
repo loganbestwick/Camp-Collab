@@ -3,6 +3,7 @@ require 'spec_helper'
 feature 'Create Event' do
   let!(:host) { FactoryGirl.create :host }
   let!(:event) { FactoryGirl.create :event }
+
   before(:each) do
     web_login host
   end
@@ -14,7 +15,7 @@ feature 'Create Event' do
       fill_in 'event_address', with: "717 California"
       expect{click_button "Create Camping Trip"}.to change{Event.all.count}.by(1)
       expect(page).to have_content "Congratulations"
-     end
+    end
 
     it 'goes to the event index page is a name is not passed in to the form' do
       visit host_events_path(host)
@@ -43,51 +44,65 @@ feature 'Create Event' do
 
     context 'on single event page' do
 
-    it 'can create a new item' do
-      visit host_events_path(host)
-      fill_in 'event_name',   with: "New Event"
-      fill_in 'event_address', with: '717 California'
-      click_button "Create Camping Trip"
-      click_link "Let me get started already!"
-      fill_in 'item_name', with: "Test Item"
-      expect{click_button "Create Item"}.to change{Item.all.count}.by(1)
-      expect(page).to have_content "Test Item"
+      it 'can create a new item' do
+        visit host_events_path(host)
+        fill_in 'event_name',   with: "New Event"
+        fill_in 'event_address', with: '717 California'
+        click_button "Create Camping Trip"
+        click_link "Let me get started already!"
+        fill_in 'item_name', with: "Test Item"
+        expect{click_button "Create Item"}.to change{Item.all.count}.by(1)
+        expect(page).to have_content "Test Item"
+      end
+
+      it 'can change the state of an item to important' do
+        event = Event.create name: "Test Event #2", host_id: host.id, address: "717 California"
+        item = Item.create name: "Test Item #2", event_id: event.id
+        visit host_events_path(host)
+        click_link "Test Event #2"
+        expect{click_link "Green eggs and ham"}.to change{item.reload.important}
+      end
+
+      it 'can change the state of an item to I got it' do
+        event = Event.create name: "Test Event #2", host_id: host.id, address: "717 California"
+        item = Item.create name: "Test Item #2", event_id: event.id
+        guest = Guest.create
+        guest_2 = Guest.create
+        guest_3 = Guest.create
+        visit host_event_path(host, event)
+        expect(page).to have_content("Test Event #2")
+        expect(page).to have_content("I got it")
+        expect{click_link "I got it"}.to change{item.reload.purchased}
+      end
+
+      it 'can remove an item from an events page' do
+        event = Event.create name: "Test Event #2", host_id: host.id, address: "717 California"
+        item = Item.create name: "Test Item #2", event_id: event.id
+        guest = Guest.create
+        guest_2 = Guest.create
+        guest_3 = Guest.create
+        visit host_event_path(host, event)
+        expect(page).to have_content("Test Event #2")
+        expect(page).to have_content("I got it")
+        expect{click_link "X"}.to change{Item.all}
+      end
+
     end
 
-    #Pending test as toggling the important attribute is currently not working
-    xit 'can change the state of an item to important' do
-      event = Event.create name: "Test Event #2", host_id: host.id
-      item = Item.create name: "Test Item #2", event_id: event.id
-      visit host_event_path(host, event)
-      expect(page).to have_content("Test Event #2")
-      expect(page).to have_content("Test Item #2")
-      expect{click_link "Important"}.to change{item.reload.important}
-    end
+    describe 'add custom item' do
 
-    it 'can change the state of an item to I got it' do
-      event = Event.create name: "Test Event #2", host_id: host.id, address: "717 California"
-      item = Item.create name: "Test Item #2", event_id: event.id
-      guest = Guest.create
-      guest_2 = Guest.create
-      guest_3 = Guest.create
-      visit host_event_path(host, event)
-      expect(page).to have_content("Test Event #2")
-      expect(page).to have_content("I got it")
-      expect{click_link "I got it"}.to change{item.reload.purchased}
-    end
+      context 'on single event page' do
 
-    it 'can remove an item from an events page' do
-      event = Event.create name: "Test Event #2", host_id: host.id, address: "717 California"
-      item = Item.create name: "Test Item #2", event_id: event.id
-      guest = Guest.create
-      guest_2 = Guest.create
-      guest_3 = Guest.create
-      visit host_event_path(host, event)
-      expect(page).to have_content("Test Event #2")
-      expect(page).to have_content("I got it")
-      expect{click_link "X"}.to change{Item.all}
+        it 'can update the location of an event' do
+          event = Event.create name: "Test Event #2", host_id: host.id, address: "717 California"
+          item = Item.create name: "Test Item #2", event_id: event.id
+          visit host_events_path(host)
+          click_link "Test Event #2"
+          click_link "Edit Trip"
+          fill_in "event_address", with: "224 Evergreen Drive"
+          expect{click_button "Update"}.to change{event.reload.address}
+        end
+      end
     end
-
   end
-end
 end
