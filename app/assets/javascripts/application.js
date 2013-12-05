@@ -16,3 +16,4 @@
 //= require_tree .
 //= require underscore
 //= require gmaps/google
+//= require jquery-ui-1.10.3.custom.min.js
