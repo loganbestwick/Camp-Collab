@@ -9,7 +9,7 @@
     <tr>
       <th><%= model_class.human_attribute_name(:name) %></th>
       <th><%= model_class.human_attribute_name(:description) %></th>
-      <th><%= model_class.human_attribute_name(:important) %>?</th>
+      <th><%= model_class.human_attribute_name(:essential) %>?</th>
       <th></th>
       <th></th>
     </tr>
@@ -20,7 +20,7 @@
     <tr class="<% if item.important == true %>important<% end %> <% if item.important == true %>purchased<% end %>">
       <td><%= item.name %></td>
       <td><%= item.description %></td>
-      <td><%= link_to "Green eggs and ham", important_path(event, item), :remote => true, :class =>"add_importance"%></td>
+      <td><%= link_to "yes/no", important_path(event, item), :remote => true, :class =>"add_importance"%></td>
       <td>
         <% if item.purchased == false %>
           <%= link_to "I got it", event_item_path(event, item, :item => {:purchased => true, :guest_id => session[:guest_id], :host_id => session[:host_id]}), :method=> :put, :class => 'btn btn-mini', :remote => true%>

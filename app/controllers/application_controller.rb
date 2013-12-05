@@ -7,4 +7,9 @@ class ApplicationController < ActionController::Base
   def render_guests_partial
    render json: render_to_string(partial: 'guests', :locals => {:event => @event}).to_json
   end
+
+  def progress_bar_claimed
+    @claimed = @event.items.where("guest_id IS NOT NULL or host_id IS NOT NULL")
+    @completion = completion(@claimed, @event.items)
+  end
 end
