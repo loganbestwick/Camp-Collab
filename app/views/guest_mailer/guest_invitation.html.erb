@@ -1,5 +1,15 @@
 <p>Dear <%= @guest.name %>,</p>
-<p>Your friend <%= @host.name %> has invited you to come camping near <%= @event.address %>. <%= @host.name %> has described this trip as:</p><p>"<%= @event.description %>"</p><p> Follow this <a href="camp-collab.herokuapp.com/hosts/<%= @host.id %>/events/<%= @event.id %>/<%= @guest.token %>">link</a> learn more about the trip and to view a list of items that are needed to get out in the wild and have an amazing time. Hurry, <%= @host.name %> is counting on you to make this trip a success.
-<p>We hope that you have an amazing time out there and that you don't get eaten by anything large and scary!</p>
+<p>Your friend <%= @host.name %> has invited you to come camping near <%= @event.address %>. <%= @host.name %> has described this trip as:</p><p>"<%= @event.description %>"</p><p> Follow this <a href="campcollab.herokuapp.com/hosts/<%= @host.id %>/events/<%= @event.id %>/<%= @guest.token %>">link</a> learn more about the trip and to view a list of items that are needed to venture off into the unknown. <%= @host.name %> is counting on your help to make this trip a success. Below we listed some helpful hints on how you can use Camp Collab to make your life easier.
+
+<ul>
+    <li>Use the "Invite Guests" field to invite more awesome friends to come camping! Just be sure it's okay with <%= @host.name %>!</li>
+    <li>You don't need to sign up for Camp Collab! We'd like you to, but you can access everything you need from your invitation link.</li>
+    <li>Collaborate with your friends by adding gear and food to your camping trip using the "Add Item" field.</li>
+    <li>Take responsiblility for bringing these items by clicking on the "I will bring this" button next to an item.</li>
+    <li>Your progress bar will fill up as more items are claimed.</li>
+    <li>Soon, everyone will know what to bring and no one will bring any more than they need! Genius!</li>
+</ul>
+
+<h4>Here at Camp Collab, we know that camping is fun but packing is not. We truly hope that this makes your life easier. We also hope that you have an amazing time camping and that you don't get eaten by anything large and scary!</h4>
 <p>Happy Trails,</p>
 <p>Camp Collab Team</p>
