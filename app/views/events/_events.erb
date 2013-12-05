@@ -7,16 +7,17 @@
     </tr>
   </thead>
   <tbody>
-    <tr><td class="highlight"><a href="#event_form" data-toggle="tab">Create Camping Trip</a>
-</td><td class="highlight"></td></tr>
+    <tr><a href="#event_form" data-toggle="tab" class="btn btn-success">Create Camping Trip</a></tr>
     <% @events.each do |event| %>
     <tr>
      <td> <%= link_to "#{event.name}", host_event_path(@host, event) %></td>
+     <td><%= event.camp_site %></td>
+     <td><%= event.start_day %> - <%= event.end_day %></td>
      <td> <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
      host_event_path(@host, event),
      :method => :delete,
      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
-     :class => 'btn btn-mini btn-danger' %> </td>
+     :class => 'btn btn-mini btn-danger event-delete' %> </td>
    </tr>
    <% end %>
  </tbody>
