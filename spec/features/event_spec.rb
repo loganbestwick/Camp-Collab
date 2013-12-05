@@ -60,7 +60,7 @@ feature 'Create Event' do
         item = Item.create name: "Test Item #2", event_id: event.id
         visit host_events_path(host)
         click_link "Test Event #2"
-        expect{click_link "Green eggs and ham"}.to change{item.reload.important}
+        expect{click_link "yes/no"}.to change{item.reload.important}
       end
 
       it 'can change the state of an item to I got it' do
