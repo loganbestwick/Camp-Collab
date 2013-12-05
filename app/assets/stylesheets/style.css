@@ -27,3 +27,14 @@ td.highlight {
   float: right;
 }
 
+#add_guest_form form, #add_item_form form{
+  text-align: center;
+}
+
+
+
+      <div class="row-fluid">
+        <div id="item-list" class="span9">
+          <%= render 'items/items', :items => @event.items, :event => @event, :completion => @completion %>
+        </div>
+      </div>
