@@ -2,6 +2,10 @@ class EventsController < ApplicationController
 
   def index
     @events = Event.where(:host_id => params[:host_id])
+    @hash = Gmaps4rails.build_markers(Event.all) do |event, marker|
+      marker.lat event.latitude
+      marker.lng event.longitude
+    end
     @event = Event.new
     @host = Host.find(params[:host_id])
     if session[:host_id]

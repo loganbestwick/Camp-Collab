@@ -14,6 +14,23 @@
     <%= render partial: 'events', locals: {events: @events} %>
   </div>
 
+  <h4>Where Other People are Camping</h4>
+
+     <div style='width: 250px;'>
+        <div id="map" style='width: 250px; height: 250px;'></div>
+      </div>
+
+      <script type="text/javascript">
+      handler = Gmaps.build('Google');
+      handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
+        markers = handler.addMarkers(<%=raw @hash.to_json %>);
+        handler.bounds.extendWith(markers);
+        handler.fitMapToBounds();
+        // handler.getMap().setZoom(12);
+      });
+
+      </script>
+
 
   <div id="event_form" class="tab-pane">
 
