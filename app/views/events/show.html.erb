@@ -48,28 +48,7 @@
         <div id="item-list" class="span9">
           <%= render 'items/items', :items => @event.items, :event => @event %>
         </div>
-        <div class="span3">
-
-          <%- model_class = Item -%>
-
-          <table class="table table-striped">
-            <thead>
-              <tr>
-                <th>Who's coming:</th>
-              </tr>
-            </thead>
-            <tbody>
-
-              <tr>
-                <td><%= @event.host.name %></td>
-              </tr>
-              <% @event.guests.each do |guest| %>
-              <tr>
-                <td><%= guest.name %></td>
-              </tr>
-              <% end %>
-            </tbody>
-          </table>
-
+        <div class="span3" id="guest-list">
+         <%= render 'guests/guests', :event => @event %>
         </div>
       </div>

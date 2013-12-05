@@ -7,7 +7,8 @@ class GuestsController < ApplicationController
     @guest = Guest.new(name: params[:guest][:name], email: params[:guest][:email], event_id: @event.id, token: @token)
     @guest.save
     GuestMailer.guest_invitation(@event, @guest).deliver
-    render_items_partial
+    render json: render_to_string(partial: 'guests', :locals => {:event => @event}).to_json
+
   end
 
   def new

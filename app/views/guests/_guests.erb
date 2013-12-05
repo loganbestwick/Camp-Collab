@@ -1,1 +1,21 @@
-_guests
+
+<%- model_class = Item -%>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Who's coming:</th>
+    </tr>
+  </thead>
+  <tbody>
+
+    <tr>
+      <td><%= @event.host.name %></td>
+    </tr>
+    <% @event.guests.each do |guest| %>
+    <tr>
+      <td><%= guest.name %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>

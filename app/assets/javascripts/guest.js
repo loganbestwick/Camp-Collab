@@ -9,7 +9,6 @@ var Event = {
   },
 
   handleItem: function(e, response) {
-    $('#item_name').val('')
     $('div#item-list').html(response)
   },
 
