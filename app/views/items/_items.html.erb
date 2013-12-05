@@ -21,7 +21,7 @@
         <td><%= link_to "yes/no", important_path(event, item), :remote => true, :class =>"add_importance"%></td>
         <td>
           <% unless item.purchased %>
-            <%= link_to "I got it", event_item_path(event, item, :item => {:purchased => true, :guest_id => session[:guest_id], :host_id => session[:host_id]}), :method=> :put, :class => 'btn btn-mini btn-primary', :remote => true%>
+             <%= link_to "I will bring this", event_item_path(event, item, :item => {:purchased => true, :guest_id => session[:guest_id], :host_id => session[:host_id]}), :method=> :put, :class => 'btn btn-mini btn-primary', :remote => true%>
           <% else %>
 
           <% if item.host.present? %>
@@ -30,10 +30,10 @@
             <% item_owner = item.guest.name %>
           <% end %>
           <%= item_owner %> is bringing this
-          <%= link_to "Don't got it! :(", event_item_path(event, item, :item => {:purchased => false, :guest_id => nil, :host_id => nil}), :method => :put, :remote => true, :class => 'unclaim' %>
+          <%= link_to "Not anymore!", event_item_path(event, item, :item => {:purchased => false, :guest_id => nil, :host_id => nil}), :method => :put, :remote => true, :class => 'btn btn-mini btn-inverse' %>
           <% end %>
         </td>
-        <td><%= link_to "X", event_item_path(event, item), :method => :delete, :remote =>true, :class => 'dlt-item'%></td>
+       <td><%= link_to "delete item", event_item_path(event, item), :method => :delete, :remote =>true, :class => 'btn btn-mini btn-danger'%></td>
       </tr>
     <% end %>
   </tbody>
