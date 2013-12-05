@@ -48,3 +48,13 @@ td.highlight {
   text-align: center;
 }
 
+
+#event_form {
+  text-align: center;
+}
+
+#event_camp_site_form textarea {
+  height: 180px;
+  width: 414px;
+}
+
