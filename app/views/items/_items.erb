@@ -12,7 +12,7 @@
   </thead>
   <tbody>
 
-    <% event.items.each do |item| %>
+    <% event.items.order('created_at ASC').all.each do |item| %>
     <tr class="<% if item.important == true %>important<% end %> <% if item.important == true %>purchased<% end %>">
       <td><%= item.name %></td>
       <td><%= item.description %></td>
