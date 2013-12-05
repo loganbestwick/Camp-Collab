@@ -7,9 +7,9 @@
     </tr>
   </thead>
   <tbody>
-    <tr><a href="#event_form" data-toggle="tab" class="btn btn-success">Create Camping Trip</a></tr>
-    <% @events.each do |event| %>
+
     <tr>
+      <% @events.each do |event| %>
      <td> <%= link_to "#{event.name}", host_event_path(@host, event) %></td>
      <td><%= event.camp_site %></td>
      <td><%= event.start_day %> - <%= event.end_day %></td>
