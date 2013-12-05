@@ -9,8 +9,10 @@ var Event = {
   },
 
   handleItem: function(e, response) {
+    $('.bar').css('width', response.completion+'%')
+    $('.bar').html('Camping trip is ' +response.completion+'% covered')
+    $('div#item-list').html(response.template)
     $('#item_name').val('')
-    $('div#item-list').html(response)
   },
 
   handleGuest: function(e, response){
