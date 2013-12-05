@@ -31,21 +31,17 @@ feature 'Signup' do
 
   end
 
-
-
   describe 'Sign out' do
     before(:each) do
       web_login host
     end
-    context 'events page' do
 
+    context 'events page' do
       it "can log user out" do
         click_link "Logout"
         uri = URI.parse(current_url)
         "#{uri.path}#{uri.query}".should == root_path
-
       end
-
     end
   end
 
@@ -67,7 +63,6 @@ feature 'Signup' do
         uri = URI.parse(current_url)
         "#{uri.path}#{uri.query}".should == root_path
       end
-
     end
   end
 end
