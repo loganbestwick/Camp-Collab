@@ -37,17 +37,17 @@
       </div>
 
       <div id="event_start_date_form" class="tab-pane">
-        <h2>When is it?</h2>
-        Date:<%= f.text_field :start_day %>
-        Time:<%= f.text_field :start_time %>
+        <h2>When does it start?</h2>
+        Date:<%= f.text_field :start_day, :type => 'date' %>
+        Time:<%= f.text_field :start_time, :type => 'time'  %>
         <button class="btn" id="prevtab" type="button">Go back</button>
         <button class="btn" id="nexttab" type="button">Continue</button>
       </div>
 
       <div id="event_end_date_form" class="tab-pane">
         <h2>When does it end?</h2>
-        End Date:<%= f.text_field :end_day %>
-        End Time:<%= f.text_field :end_time %>
+        End Date:<%= f.text_field :end_day, :type => 'date'  %>
+        End Time:<%= f.text_field :end_time, :type => 'time' %>
         <button class="btn" id="prevtab" type="button">Go back</button>
         <button class="btn" id="nexttab" type="button">Continue</button>
       </div>

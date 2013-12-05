@@ -22,3 +22,7 @@
 td.highlight {
   background-color: #63D453 !important;
 }
+
+.event-delete {
+  float: right;
+}
