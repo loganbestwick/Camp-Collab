@@ -40,10 +40,11 @@ td.highlight {
 }
 
 
-      <div class="row-fluid">
-        <div id="item-list" class="span9">
-          <%= render 'items/items', :items => @event.items, :event => @event, :completion => @completion %>
-        </div>
-      </div>
+#map-wrapper{
+  width: 200px;
+}
 
+#invite_guests h4, #add_items h4 {
+  text-align: center;
+}
 

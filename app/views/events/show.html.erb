@@ -7,11 +7,12 @@
       <div class="row-fluid">
         <div class="span3"></div>
 
-        <div class="span6">
+        <div class="span8">
 
           <div class="container-fluid">
            <div class="row-fluid">
-            <div class="span3" style="width: 200px;">
+
+            <div id="map-wrapper" class="span3">
              <div id="map" style='width: 200px; height: 200px;'></div>
              <script type="text/javascript">
              handler = Gmaps.build('Google');
@@ -24,7 +25,7 @@
              </script>
 
            </div>
-           <div class="span6" >
+           <div class="span7" >
             <h2><%= @event.name %></h2>
             <%= link_to "Edit Trip", edit_host_event_path(@event.host_id, @event), :class => "event-edit-link" %>
             <h6>Location: <% if @event.address %><%= @event.address %><% else %> TBD <% end %></h2>
@@ -40,11 +41,11 @@
 
               <hr />
 
-              <div class="container-fluid">
+              <div id="invite_guests" class="container-fluid">
                <div class="row-fluid">
                 <div class="span3"></div>
                 <div class="span6">
-                  <h4 style="text-align:center;">Invite Guests:</h4>
+                  <h4>Invite Guests:</h4>
                   <div id="add_guest_form">
                     <%= form_for(@guest, url: event_guests_path(@event), :remote => true) do |f| %>
                     <%= f.text_field :name, :placeholder => "name" %><br />
@@ -72,7 +73,7 @@
          <hr />
 
 
-         <div class="container-fluid">
+         <div id="add_items" class="container-fluid">
            <div class="row-fluid">
 
             <div class="span12" >
@@ -80,7 +81,7 @@
                <div class="row-fluid">
                 <div class="span3"></div>
                 <div class="span6" >
-                  <h4 style="text-align:center;">Add Items:</h4>
+                  <h4>Add Items:</h4>
                   <div id="add_item_form">
                     <%= form_for(@item, url: event_items_path(@event), :remote => true) do |f| %>
                     <%= f.text_field :name, :placeholder => "item name" %>
