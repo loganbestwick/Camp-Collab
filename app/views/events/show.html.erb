@@ -17,13 +17,15 @@
         <div id="map" style='width: 250px; height: 250px;'></div>
       </div>
 
+    <%= link_to "Edit Trip", edit_host_event_path(@event.host_id, @event) %>
+
       <script type="text/javascript">
       handler = Gmaps.build('Google');
       handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
         markers = handler.addMarkers(<%=raw @hash.to_json %>);
         handler.bounds.extendWith(markers);
         handler.fitMapToBounds();
-        handler.getMap().setZoom(13);
+        handler.getMap().setZoom(12);
       });
 
       </script>
