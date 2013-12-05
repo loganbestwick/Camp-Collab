@@ -9,3 +9,5 @@ $(document).on('click', '#nexttab', function() {
     currentTab.removeClass('active')
     currentTab.next('div').addClass('active')
 });
+
+$('.timepicker').pickatime()

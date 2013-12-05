@@ -42,10 +42,10 @@
       <div id="event_start_date_form" class="tab-pane">
         <h2>Very creative. Well done. </h2>
         <h4>When do you leave? When will you get back?</h4>
-        <%= f.text_field :start_day, :placeholder => "Start Date", :id => 'datepicker' %>
-        <%= f.time_select :start_time, :default => Time.now, :ampm => true  %>
-        <%= f.text_field :end_day, :placeholder => "End Date", :id => 'datepicker' %>
-        <%= f.time_select :end_time, :default => Time.now, :ampm => true  %>
+        <%= f.text_field :start_day, :placeholder => "Start Date", :class => 'datepicker' %>
+        <%= f.text_field :start_time, :placeholder => Time.now, :class => 'timepicker'  %>
+        <%= f.text_field :end_day, :placeholder => "End Date", :class => 'datepicker' %>
+        <%= f.text_field :end_time, :placeholder => Time.now, :class => 'timepicker'  %>
         <button class="btn" id="prevtab" type="button">Go back</button>
         <button class="btn" id="nexttab" type="button">Continue</button>
       </div>
@@ -84,7 +84,12 @@
 </div>
 
 <script>
-$(function() {
-  $( "#datepicker" ).datepicker();
-});
+// $(function() {
+//   $( "#datepicker" ).datepicker();
+// });
+
+$('.datepicker').pickadate()
+
+$('.timepicker').pickatime()
+
 </script>
