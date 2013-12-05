@@ -1,11 +1,20 @@
 <div id="event_camp_site_form" class="tab-pane">
-	<h2>Congratulations, you have successfully created a camping trip!</h2>
-	<h4>Now before you go ahead and take too much time to pat yourself on the back, there are a few things you should know before proceeding into the wilderness. Creating the trip was only half the battle, now you have to fill it up full of useful items. The way this whole shindig works is that you will add all of the items that you can think of for the camping trip. Then, you will invite your friends to come camping with you. While this app can't help you find good friends, if you already have some, you'll be happy to know that they don't need to sign up for this app. Your invitation alone will provide a link for them to access your custom camping trip page. Then, all of you will add camping gear to your hearts' content.  Afterwards, you and all of your friends can go through the list of items and figure out who will bring what. We hope that this makes things convenient for you, so even if you do get eaten by a bear, you had a truly nice time beforehand, knowing that packing was not a hassle and that nobody brought duplicate items. Have fun and be safe in the wilderness!</h4>
-	<br/>
-	<br/>
+	<h2>Congratulations, you did it!</h2>
+	<h4>But before you march off boldy into the unknown, there are a few things you should know about.</h4>
+	<ul>
+		<li>Use the "Invite Guests" field to invite your awesome friends to come camping</li>
+		<li>Camp Collab is not responsible for finding you awesome friends if you have none</li>
+		<li>Your friends do not need to sign up for our service! You only need to send them an invitation</li>
+		<li>Your invitation alone will provide a link for your friends to access your custom camping trip</li>
+		<li>Collaborate with your friends by adding gear and food to your camping trip using the "Add Item" field</li>
+		<li>Take responsiblility for bringing these items by clicking on the "I got it" button next to an item.</li>
+		<li>Your progress bar will fill up as more items are claimed</li>
+		<li>Soon, everyone will know what to bring and no one will bring any more than they need! Genius!</li>
+		</ul>
+		<h4>Here at Camp Collab, we know that camping is fun but packing is not. We truly hope that this makes your life easier. Have fun and be safe in the great outdoors!</h4>
+  <br/>
 	<p>All the best,</p>
 	<p>Camp Collab Team</p>
 	<br/>
-	<p>Disclaimer: Camp Collab Team is not responsible for you having bad friends.</p>
 </div>
-<%= link_to host_event_path(@host, @event) %>
+<%= link_to "Let me get started already!", host_event_path(@host, @event)  %>
