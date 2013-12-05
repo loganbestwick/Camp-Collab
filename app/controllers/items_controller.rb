@@ -22,6 +22,7 @@ class ItemsController < ApplicationController
     Item.find(params[:id]).destroy
     @event = Event.find(params[:event_id])
     @items = @event.items
+    render_items_partial
   end
 
   def important
