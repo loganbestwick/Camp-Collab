@@ -39,8 +39,8 @@
             <% end %>
           <% end %> 
           &nbsp;&nbsp;<a href="#" class="btn btn-mini" data-toggle="modal" data-target="#invite_guests">Invite More People</a></h6>
-        <h6>Begins at: <% if @event.start_time %><%= @event.start_time.strftime("%l:%M %P") %><% else %> No specified start time <% end %></h6>
-        <h6>Begins on: <% if @event.start_day %><%= @event.start_day %><% else %> No specified start day <% end %></h6>
+        <h6>Starts: <% if @event.start_time %><%= @event.start_time.strftime("%l:%M %P") %><% else %> No specified start time <% end %> on <% if @event.start_day %><%= @event.start_day %><% else %> No specified start day <% end %></h6>
+        <h6>Ends: <% if @event.end_time %><%= @event.end_time.strftime("%l:%M %P") %><% else %> No specified end time <% end %> on <% if @event.end_day %><%= @event.end_day %><% else %> No specified end day <% end %></h6>
       </div>
     </div>
 
