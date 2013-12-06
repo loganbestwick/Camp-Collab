@@ -29,10 +29,16 @@
         <h2><%= @event.name %></h2>
         <%= link_to "Edit Trip", edit_host_event_path(@event.host_id, @event), :class => "event-edit-link btn btn-warning" %>
         <h6>Location: <% if @event.address %><%= @event.address %><% else %> TBD <% end %></h6>
-
         <h6>Host: <%= @host.name %></h6>
-        <% guests = @event.guests.map { |guest| guest.name } %>
-        <h6>Who's Coming: <%= guests.join(', ') %>&nbsp;&nbsp;<a href="#" class="btn btn-mini" data-toggle="modal" data-target="#invite_guests">Invite More People</a></h6>
+        <h6>Who's Coming: 
+          <% @event.guests.each do |guest| %> 
+            <% if guest != @event.guests.last %>
+              <%= link_to "#{guest.name}", "mailto:#{guest.email}"%>,  
+            <% else %>
+              <%= link_to "#{guest.name}", "mailto:#{guest.email}"%> 
+            <% end %>
+          <% end %> 
+          &nbsp;&nbsp;<a href="#" class="btn btn-mini" data-toggle="modal" data-target="#invite_guests">Invite More People</a></h6>
         <h6>Begins at: <% if @event.start_time %><%= @event.start_time.strftime("%l:%M %P") %><% else %> No specified start time <% end %></h6>
         <h6>Begins on: <% if @event.start_day %><%= @event.start_day %><% else %> No specified start day <% end %></h6>
       </div>
