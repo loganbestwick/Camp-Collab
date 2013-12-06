@@ -19,14 +19,7 @@
 
     <%= form_for(@event, url: host_events_path(@host)) do |f| %>
     <% if @event.errors.any? %>
-    <div class="error_messages">
-      <h2>Form is invalid</h2>
-      <ul>
-        <% for message in @event.errors.full_messages %>
-        <li><%= message %></li>
-        <% end %>
-      </ul>
-    </div>
+
     <% end  %>
 
     <div id="event_form_tabs" class="tab-content">
@@ -45,7 +38,7 @@
         <h2>Very creative. Well done. </h2>
         <h4>When do you leave? When will you get back?</h4>
         <%= f.text_field :start_day, :placeholder => "Start Date", :class => 'datepicker' %>
-        <%= f.text_field :start_time, :placeholder => "Star Time", :class => 'timepicker'  %>
+        <%= f.text_field :start_time, :placeholder => "Start Time", :class => 'timepicker'  %>
         <br>
         <%= f.text_field :end_day, :placeholder => "End Date", :class => 'datepicker' %>
         <%= f.text_field :end_time, :placeholder => "End Time", :class => 'timepicker'  %>

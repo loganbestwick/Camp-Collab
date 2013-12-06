@@ -5,7 +5,7 @@
 <div class="container-fluid">
 
   <div class="row-fluid">
-    <div class="span3"></div>
+    <div class="span2"></div>
 
     <div class="span8">
 
@@ -30,68 +30,69 @@
         <%= link_to "Edit Trip", edit_host_event_path(@event.host_id, @event), :class => "event-edit-link btn btn-warning" %>
         <h6>Location: <% if @event.address %><%= @event.address %><% else %> TBD <% end %></h6>
         <h6>Host: <%= @host.name %></h6>
-        <h6>Who's Coming: 
-          <% @event.guests.each do |guest| %> 
-            <% if guest != @event.guests.last %>
-              <%= link_to "#{guest.name}", "mailto:#{guest.email}"%>,  
-            <% else %>
-              <%= link_to "#{guest.name}", "mailto:#{guest.email}"%> 
+        <h6>Who's Coming:
+          <% @event.guests.each do |guest| %>
+          <% if guest != @event.guests.last %>
+          <%= link_to "#{guest.name}", "mailto:#{guest.email}"%>,
+          <% else %>
+          <%= link_to "#{guest.name}", "mailto:#{guest.email}"%>
+          <% end %>
+          <% end %>
+          <br /><a href="#" class="btn btn-mini btn-success" data-toggle="modal" data-target="#invite_guests">Invite More People</a></h6>
+          <h6>Begins at: <% if @event.start_time %><%= @event.start_time.strftime("%l:%M %P") %><% else %> No specified start time <% end %></h6>
+          <h6>Begins on: <% if @event.start_day %><%= @event.start_day %><% else %> No specified start day <% end %></h6>
+        </div>
+      </div>
+
+
+
+    </div>
+
+
+    <div id="invite_guests" class="container-fluid modal fade">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+      </div>
+      <div class="row-fluid">
+        <div class="span3"></div>
+        <div class="span6">
+          <h4>Invite Campers:</h4>
+          <div id="add_guest_form">
+            <%= form_for(@guest, url: event_guests_path(@event), :remote => true) do |f| %>
+            <%= f.text_field :name, :placeholder => "your friend's name" %><br />
+            <%= f.text_field :email, :placeholder => "your friend's email" %>
+            <br />
+            <%= f.submit "Send Invitation", :class => "btn btn-success" %>
             <% end %>
-          <% end %> 
-          &nbsp;&nbsp;<a href="#" class="btn btn-mini" data-toggle="modal" data-target="#invite_guests">Invite More People</a></h6>
-        <h6>Begins at: <% if @event.start_time %><%= @event.start_time.strftime("%l:%M %P") %><% else %> No specified start time <% end %></h6>
-        <h6>Begins on: <% if @event.start_day %><%= @event.start_day %><% else %> No specified start day <% end %></h6>
+          </div>
+        </div>
+        <div class="span3"></div>
       </div>
     </div>
 
+    <hr />
 
 
-  </div>
-
-
-  <div id="invite_guests" class="container-fluid modal fade">
-  <div class="modal-header">
-    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-  </div>
-   <div class="row-fluid">
-    <div class="span3"></div>
-    <div class="span6">
-      <h4>Invite Campers:</h4>
-      <div id="add_guest_form">
-        <%= form_for(@guest, url: event_guests_path(@event), :remote => true) do |f| %>
-        <%= f.text_field :name, :placeholder => "your friend's name" %><br />
-        <%= f.text_field :email, :placeholder => "your friend's email" %>
-        <br />
-        <%= f.submit "Send Invitation", :class => "btn btn-success" %>
-        <% end %>
-      </div>
-    </div>
-    <div class="span3"></div>
-  </div>
-</div>
-
-<hr />
-
-
-   <div id="event_progress_bar" class="progress progress-striped" style="text-align: center;">
+    <div id="event_progress_bar" class="progress progress-striped" style="text-align: center;">
       <div class="bar" style="width: <%= @completion %>%;"></div>
     </div>
     <div id="progress_message">Camping trip is <strong><%= @completion %>%</strong> covered.</div>
 
 
-  <div id="item-list">
+    <div id="item-list">
 
-    <%= render 'items/items', :items => @event.items, :event => @event, :completion => @completion %>
+      <%= render 'items/items', :items => @event.items, :event => @event, :completion => @completion %>
 
-  </div>
+    </div>
 
-  <div id="add_item_form row">
+    <div id="add_item_form row">
       <%= form_for(@item, url: event_items_path(@event), :remote => true) do |f| %>
       <%= f.text_field :name, :placeholder => "food, camping gear, etc.", :class => "span10" %>
       <%= f.submit "Add Item", :class => "btn btn-success btn-mini span2" %>
       <% end %>
+    </div>
   </div>
-</div>
+  <div class="span3"></div>
 </div>
 </div>
 </div>

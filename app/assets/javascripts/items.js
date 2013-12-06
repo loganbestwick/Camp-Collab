@@ -6,11 +6,7 @@ var Event = {
     $('div#item-list').on('ajax:success', 'a.btn.btn-mini', this.handleItem)
     $('div#item-list').on('ajax:success', 'a.unclaim', this.handleItem)
     $('form#new_guest').on('ajax:success', this.handleGuest)
-
-    $('#guestshow').on('click', function(e){
-      e.preventDefault();
-      $('#guestslist').slideToggle()
-    })
+    $('#essential_button').on('ajax:success', this.handleItem)
   },
 
   handleItem: function(e, response) {
@@ -18,6 +14,7 @@ var Event = {
     $('.bar').html('Camping trip is ' +response.completion+'% covered')
     $('div#item-list').html(response.template)
     $('#item_name').val('')
+    // $('#essential_button').addClass('btn-success')
   },
 
   handleGuest: function(e, response){
