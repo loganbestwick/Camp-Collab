@@ -75,3 +75,7 @@ td.highlight {
 .nav-collapse {
   float: right;
 }
+
+#add_guest_form{
+  text-align: center;
+}
