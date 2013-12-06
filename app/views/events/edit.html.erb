@@ -1,11 +1,20 @@
     <%= form_for :event, url: host_event_path(@event.host_id, @event), :html => { :id => "edit_event_form" }, :method => "put" do |f| %>
         Name: <%= f.text_field :name %><br>
         Location: <%= f.text_field :address %><br>
-        Start Date: <%= f.text_field :start_day %><br>
-        Start Time: <%= f.text_field :start_time %><br>
-        End Date: <%= f.text_field :end_day %><br>
-        End Time: <%= f.text_field :end_time %><br>
+        Start Date: <%= f.text_field :start_day, :class => 'datepicker'  %><br>
+        Start Time: <%= f.text_field :start_time, :class => 'timepicker' %><br>
+        End Date: <%= f.text_field :end_day, :class => 'datepicker'  %><br>
+        End Time: <%= f.text_field :end_time, :class => 'timepicker' %><br>
         <%= f.hidden_field :latitude %>
         <%= f.hidden_field :longitude %>
         <%= f.submit "Update", :class => "btn btn-success" %>
     <% end %>
+
+    <script>
+// $(function() {
+//   $( "#datepicker" ).datepicker();
+// });
+
+$('.datepicker').pickadate()
+
+$('.timepicker').pickatime()
