@@ -36,26 +36,31 @@
         <h4>We suggest something creative.</h4>
 
         <%= f.text_field :name, :placeholder => "Name" %>
-        <button class="btn" id="nexttab" type="button">Continue</button>
+        <br>
+        <a href="#events_list" data-toggle="tab" class="btn">Go back</a>
+        <button class="btn btn-success" id="nexttab" type="button">Continue</button>
       </div>
 
       <div id="event_start_date_form" class="tab-pane">
         <h2>Very creative. Well done. </h2>
         <h4>When do you leave? When will you get back?</h4>
         <%= f.text_field :start_day, :placeholder => "Start Date", :class => 'datepicker' %>
-        <%= f.text_field :start_time, :placeholder => Time.now, :class => 'timepicker'  %>
+        <%= f.text_field :start_time, :placeholder => "Star Time", :class => 'timepicker'  %>
+        <br>
         <%= f.text_field :end_day, :placeholder => "End Date", :class => 'datepicker' %>
-        <%= f.text_field :end_time, :placeholder => Time.now, :class => 'timepicker'  %>
+        <%= f.text_field :end_time, :placeholder => "End Time", :class => 'timepicker'  %>
+        <br>
         <button class="btn" id="prevtab" type="button">Go back</button>
-        <button class="btn" id="nexttab" type="button">Continue</button>
+        <button class="btn btn-success" id="nexttab" type="button">Continue</button>
       </div>
 
       <div id="event_end_date_form" class="tab-pane">
         <h2>Great. Now for a campsite...</h2>
         <h4>Official or unofficial, give your campsite a name.</h4>
         <%= f.text_field :camp_site, :placeholder => "Campsite" %>
+        <br>
         <button class="btn" id="prevtab" type="button">Go back</button>
-        <button class="btn" id="nexttab" type="button">Continue</button>
+        <button class="btn btn-success" id="nexttab" type="button">Continue</button>
       </div>
 
       <div id="event_location_form" class="tab-pane">
@@ -64,14 +69,16 @@
         <%= f.text_field :address, :placeholder => "Location" %>
         <%= f.hidden_field :latitude %>
         <%= f.hidden_field :longitude%>
+        <br>
         <button class="btn" id="prevtab" type="button">Go back</button>
-        <button class="btn" id="nexttab" type="button">Continue</button>
+        <button class="btn btn-success" id="nexttab" type="button">Continue</button>
       </div>
 
       <div id="event_camp_site_form" class="tab-pane">
         <h2>Take a moment and describe your trip.</h2>
         <h4>When you invite your friends, this will be the first thing they see. So make it good.</h4>
         <%= f.text_area :description, :placeholder => "I went to the woods because I wished to live deliberately, to front only the essential facts of life, and see if I could not learn what it had to teach, and not, when I came to die, discover that I had not lived. I did not wish to live what was not life, living is so dear; nor did I wish to practise resignation, unless it was quite necessary. I wanted to live deep and suck out all the marrow of life, to live so sturdily and Spartan-like as to put to rout all that was not life, to cut a broad swath and shave close, to drive life into a corner, and reduce it to its lowest terms.                                                           --Henry David Thoreau" %>
+        <br>
         <button class="btn" id="prevtab" type="button">Go back</button>
         <%= f.submit "Create Camping Trip", class: "btn btn-large btn-success"  %>
       </div>
