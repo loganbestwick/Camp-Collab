@@ -27,7 +27,7 @@
            </div>
            <div class="span7" >
             <h2><%= @event.name %></h2>
-            <%= link_to "Edit Trip", edit_host_event_path(@event.host_id, @event), :class => "event-edit-link" %>
+            <%= link_to "Edit Trip", edit_host_event_path(@event.host_id, @event), :class => "event-edit-link btn btn-warning" %>
             <h6>Location: <% if @event.address %><%= @event.address %><% else %> TBD <% end %></h2>
 
               <h6>Host: <%= @host.name %></h2>
@@ -45,13 +45,12 @@
                <div class="row-fluid">
                 <div class="span3"></div>
                 <div class="span6">
-                  <h4>Invite Guests:</h4>
                   <div id="add_guest_form">
                     <%= form_for(@guest, url: event_guests_path(@event), :remote => true) do |f| %>
-                    <%= f.text_field :name, :placeholder => "name" %><br />
-                    <%= f.text_field :email, :placeholder => "email" %>
+                    <%= f.text_field :name, :placeholder => "your friend's name" %><br />
+                    <%= f.text_field :email, :placeholder => "your friend's email" %>
                     <br />
-                    <%= f.submit "Send Invitation", :class => "btn btn-success" %>
+                    <div id="button_rapper" style="width: 100%"><%= f.submit "Send Invitation", :class => "btn btn-success" %></div>
                     <% end %>
                   </div>
                 </div>
@@ -81,12 +80,11 @@
                <div class="row-fluid">
                 <div class="span3"></div>
                 <div class="span6" >
-                  <h4>Add Items:</h4>
                   <div id="add_item_form">
                     <%= form_for(@item, url: event_items_path(@event), :remote => true) do |f| %>
-                    <%= f.text_field :name, :placeholder => "item name" %>
+                    <%= f.text_field :name, :placeholder => "food, camping gear, etc." %>
                     <br />
-                    <%= f.submit :class => "btn btn-success" %>
+                    <div id="button_rapper"><%= f.submit "Add Item", :class => "btn btn-success" %></div>
                     <% end %>
                   </div>
                 </div>
@@ -94,9 +92,11 @@
               </div>
             </div>
 
-            <div id="event_progress_bar" class="progress progress-striped">
-              <div class="bar" style="width: <%= @completion %>%;">Camping trip is <%= @completion %>% covered.</div>
+            <div id="event_progress_bar" class="progress progress-striped" style="text-align: center;">
+              <div class="bar" style="width: <%= @completion %>%;"></div>
             </div>
+            <div id="progress_message">Camping trip is <strong><%= @completion %>%</strong> covered.</div>
+
 
             <div id="item-list">
               <%= render 'items/items', :items => @event.items, :event => @event, :completion => @completion %>

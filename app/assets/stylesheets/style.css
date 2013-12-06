@@ -48,3 +48,14 @@ td.highlight {
   text-align: center;
 }
 
+
+#button_rapper {
+  text-align: center;
+}
+
+#progress_message{
+  width: 100%;
+  text-align: center;
+  margin-top: -15px;
+  margin-bottom: 15px;
+  }
