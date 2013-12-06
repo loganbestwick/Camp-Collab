@@ -51,7 +51,7 @@ feature 'Create Event' do
         click_button "Create Camping Trip"
         click_link "Let me get started already!"
         fill_in 'item_name', with: "Test Item"
-        expect{click_button "Create Item"}.to change{Item.all.count}.by(1)
+        expect{click_button "Add Item"}.to change{Item.all.count}.by(1)
         expect(page).to have_content "Test Item"
       end
 

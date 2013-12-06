@@ -33,7 +33,7 @@
           <%= link_to "Not anymore!", event_item_path(event, item, :item => {:purchased => false, :guest_id => nil, :host_id => nil}), :method => :put, :remote => true, :class => 'btn btn-mini btn-inverse' %>
           <% end %>
         </td>
-       <td><%= link_to "delete item", event_item_path(event, item), :method => :delete, :remote =>true, :class => 'btn btn-mini btn-danger'%></td>
+       <td><%= link_to "X", event_item_path(event, item), :method => :delete, :remote =>true, :class => 'btn btn-mini btn-danger'%></td>
       </tr>
     <% end %>
   </tbody>

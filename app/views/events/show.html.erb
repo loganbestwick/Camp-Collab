@@ -74,14 +74,16 @@
 
 
   <div id="item-list">
-    <div id="add_item_form row">
+
+    <%= render 'items/items', :items => @event.items, :event => @event, :completion => @completion %>
+
+  </div>
+
+  <div id="add_item_form row">
       <%= form_for(@item, url: event_items_path(@event), :remote => true) do |f| %>
       <%= f.text_field :name, :placeholder => "food, camping gear, etc.", :class => "span10" %>
       <%= f.submit "Add Item", :class => "btn btn-success btn-mini span2" %>
       <% end %>
-    </div>
-    <%= render 'items/items', :items => @event.items, :event => @event, :completion => @completion %>
-
   </div>
 </div>
 </div>
