@@ -57,4 +57,11 @@ td.highlight {
   height: 180px;
   width: 414px;
 }
+  
+#edit_event_form{
+  text-align: center;
+}
 
+.nav-collapse {
+  float: right;
+}
