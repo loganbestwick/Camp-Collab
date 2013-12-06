@@ -4,7 +4,7 @@
 </div>
 <div class="tab-content">
 
-  <div id="login_row" class="row-fluid landing-row tab-pane active">
+  <div id="login_row" class="row-fluid landing-row tab-pane fade in active">
     <div class="span4"></div>
     <div id="login_form" class="span4">
       <%= form_tag sessions_path, class: "login_form" do %>
@@ -21,7 +21,7 @@
     <div class="span4"></div>
   </div>
 
-  <div id="signup_row" class="row-fluid landing-row tab-pane">
+  <div id="signup_row" class="row-fluid landing-row tab-pane fade">
     <div class="span4"></div>
     <div id="login_form" class="span4">
       <%= form_for @host do |f| %>

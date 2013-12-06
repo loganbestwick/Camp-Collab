@@ -11,7 +11,7 @@ var Event = {
 
   handleItem: function(e, response) {
     $('.bar').css('width', response.completion+'%')
-    $('.bar').html('Camping trip is ' +response.completion+'% covered')
+    $('#progress_message').html('Camping trip is <strong>' +response.completion+'%</strong> covered')
     $('div#item-list').html(response.template)
     $('#item_name').val('')
     // $('#essential_button').addClass('btn-success')

@@ -27,7 +27,9 @@
        </div>
        <div class="span7" >
         <h2><%= @event.name %></h2>
+        <% if @host_session %>
         <%= link_to "Edit Trip", edit_host_event_path(@event.host_id, @event), :class => "event-edit-link btn btn-warning" %>
+        <% end %>
         <h6>Location: <% if @event.address %><%= @event.address %><% else %> TBD <% end %></h6>
         <h6>Host: <%= @host.name %></h6>
         <h6>Who's Coming:

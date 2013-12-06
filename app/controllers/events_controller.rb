@@ -18,6 +18,7 @@ class EventsController < ApplicationController
       marker.lng event.longitude
     end
     @host  = Host.find(params[:host_id])
+    @host_session = session[:host_id]
     @item = Item.new
     @guest = Guest.new
     @claimed = @event.items.where("guest_id IS NOT NULL or host_id IS NOT NULL")
