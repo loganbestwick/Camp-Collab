@@ -29,7 +29,7 @@
 
 
           <% unless item.purchased %>
-             <%= link_to "no", event_item_path(event, item, :item => {:purchased => true, :guest_id => session[:guest_id], :host_id => session[:host_id]}), :method=> :put, :class => 'btn btn-mini', :remote => true%>
+             <%= link_to "no", event_item_path(event, item, :item => {:purchased => true, :guest_id => session[:guest_id], :host_id => session[:host_id]}), :method=> :put, :class => 'btn btn-mini', :remote => true, :id => "purchased_button" %>
           <% else %>
 
           <% if item.host.present? %>
@@ -37,7 +37,7 @@
           <% else %>
             <% item_owner = item.guest.name %>
           <% end %>
-          <%= link_to "yes", event_item_path(event, item, :item => {:purchased => false, :guest_id => nil, :host_id => nil}), :method => :put, :remote => true, :class => 'btn btn-mini btn-primary' %>
+          <%= link_to "yes", event_item_path(event, item, :item => {:purchased => false, :guest_id => nil, :host_id => nil}), :method => :put, :remote => true, :class => 'btn btn-mini btn-primary', :id => "purchased_button" %>
           <% end %>
 
 

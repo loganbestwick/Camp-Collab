@@ -1,26 +1,24 @@
 
 <div id="events_page_tabs" class="tab-content">
 
-  <div id="events_list" class="tab-pane active">
+  <div id="events_list" class="tab-pane active fade in">
     <div id="events_page_header">
-    <h2>You know you're excited to go camping.</h2>
-    <% if @events.first %>
-        <h4>Figure out who is bringing what and get out there.</h4>
-    <% else %>
-        <h4>Create a trip and get started.</h4>
-    <% end %>
-     <a href="#event_form" data-toggle="tab" class="btn btn-large btn-success">Add Camping Trip</a>
-  </div>
+      <h2>You know you're excited to go camping.</h2>
+      <% if @events.first %>
+      <h4>Figure out who is bringing what and get out there.</h4>
+      <% else %>
+      <h4>Create a trip and get started.</h4>
+      <% end %>
+      <a href="#event_form" data-toggle="tab" class="btn btn-large btn-success">Add Camping Trip</a>
+    </div>
     <%= render partial: 'events', locals: {events: @events} %>
   </div>
 
 
-  <div id="event_form" class="tab-pane">
+  <div id="event_form" class="tab-pane fade">
 
     <%= form_for(@event, url: host_events_path(@host)) do |f| %>
-    <% if @event.errors.any? %>
 
-    <% end  %>
 
     <div id="event_form_tabs" class="tab-content">
 
@@ -68,8 +66,21 @@
       </div>
 
       <div id="event_camp_site_form" class="tab-pane">
+
+
         <h2>Take a moment and describe your trip.</h2>
         <h4>When you invite your friends, this will be the first thing they see. So make it good.</h4>
+
+        <% if @event.errors.any? %>
+        <div class="error_messages">
+          <h2>Form is invalid</h2>
+          <ul>
+            <% for message in @event.errors.full_messages %>
+            <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+        <% end  %>
         <%= f.text_area :description, :placeholder => "I went to the woods because I wished to live deliberately, to front only the essential facts of life, and see if I could not learn what it had to teach, and not, when I came to die, discover that I had not lived. I did not wish to live what was not life, living is so dear; nor did I wish to practise resignation, unless it was quite necessary. I wanted to live deep and suck out all the marrow of life, to live so sturdily and Spartan-like as to put to rout all that was not life, to cut a broad swath and shave close, to drive life into a corner, and reduce it to its lowest terms.                                                           --Henry David Thoreau" %>
         <br>
         <button class="btn" id="prevtab" type="button">Go back</button>
