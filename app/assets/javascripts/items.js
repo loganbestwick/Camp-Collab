@@ -6,6 +6,11 @@ var Event = {
     $('div#item-list').on('ajax:success', 'a.btn.btn-mini', this.handleItem)
     $('div#item-list').on('ajax:success', 'a.unclaim', this.handleItem)
     $('form#new_guest').on('ajax:success', this.handleGuest)
+
+    $('#guestshow').on('click', function(e){
+      e.preventDefault();
+      $('#guestslist').slideToggle()
+    })
   },
 
   handleItem: function(e, response) {
@@ -19,6 +24,7 @@ var Event = {
     $('#guest_name').val('')
     $('#guest_email').val('')
     $('div#guest-list').html(response)
+
   },
 
    handleError: function(e, response) {
@@ -28,4 +34,5 @@ var Event = {
 $(document).ready(function(){
   Event.init()
 
+  $('#guestslist').hide()
 })
