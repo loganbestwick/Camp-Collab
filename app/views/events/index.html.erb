@@ -37,7 +37,8 @@
 
         <%= f.text_field :name, :placeholder => "Name" %>
         <br>
-        <button class="btn" id="nexttab" type="button">Continue</button>
+        <a href="#events_list" data-toggle="tab" class="btn">Go back</a>
+        <button class="btn btn-success" id="nexttab" type="button">Continue</button>
       </div>
 
       <div id="event_start_date_form" class="tab-pane">
@@ -50,7 +51,7 @@
         <%= f.text_field :end_time, :placeholder => "End Time", :class => 'timepicker'  %>
         <br>
         <button class="btn" id="prevtab" type="button">Go back</button>
-        <button class="btn" id="nexttab" type="button">Continue</button>
+        <button class="btn btn-success" id="nexttab" type="button">Continue</button>
       </div>
 
       <div id="event_end_date_form" class="tab-pane">
@@ -59,7 +60,7 @@
         <%= f.text_field :camp_site, :placeholder => "Campsite" %>
         <br>
         <button class="btn" id="prevtab" type="button">Go back</button>
-        <button class="btn" id="nexttab" type="button">Continue</button>
+        <button class="btn btn-success" id="nexttab" type="button">Continue</button>
       </div>
 
       <div id="event_location_form" class="tab-pane">
@@ -70,7 +71,7 @@
         <%= f.hidden_field :longitude%>
         <br>
         <button class="btn" id="prevtab" type="button">Go back</button>
-        <button class="btn" id="nexttab" type="button">Continue</button>
+        <button class="btn btn-success" id="nexttab" type="button">Continue</button>
       </div>
 
       <div id="event_camp_site_form" class="tab-pane">
