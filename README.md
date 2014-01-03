@@ -9,6 +9,8 @@ Camp Collab is a online application which allows you to create virtual campsites
 
 The project is still in beta, but usable. Feel free to send us feedback @ teamcampcollab@gmail.com
 
+Check it out live at: [campcollab.herokuapp.com](campcollab.herokuapp.com)
+
 Happy camping!
 
 Team Camp Collab
